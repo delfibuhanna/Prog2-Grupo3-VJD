@@ -11,9 +11,9 @@
 	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="../public/stylesheets/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="stylesheets/css/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="../public/stylesheets/css/app.css">
+	<link rel="stylesheet" href="stylesheets/css/app.css">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
 					<a href="index.ejs" class="main-header_home-link">
-						<img src="../public/images/logo-mercado-liebre.svg">
+						<img src="images/logo-mercado-liebre.svg">
 					</a>
 				</div>
 	
@@ -85,12 +85,23 @@
 				<h2 class="products-title">Registrate</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de registro. <br>
+			<h2 class="col-12"> <i>///////////////////////////////////////// 
+				<br> Acá va el formulario de registro. <br>
 			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
 			Eliminen estás líneas y coloquen el formulario. <br>
 			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
 			////////////////
 			</h2>
+			<form action = "register.js" method= 'GET'>
+				<div>
+				 <label for="Email">Email:</label>
+				 <input type="Email"name="Email" id="Mimail" placeholder="ejemplo@gmail.com"></input>
+				</div>
+				<div>
+				 <label for="usuario">Usuario:</label>
+				 <input type="usuraio" name="Usuario" id="miusuario" placeholder="usuario"></input>
+				</div>
+				</form>
 
 
 	<!-- footer -->
