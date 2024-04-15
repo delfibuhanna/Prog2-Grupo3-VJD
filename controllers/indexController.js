@@ -1,16 +1,9 @@
-let indexController= {
-    index:function(req,res){
-        return res.render("index");
-},
-    login: function(req,res){
-        return res.render("login");
-},
-    register: function(req,res){
-        return res.render("register");
-},
-    profile: function(req,res){
-        return res.render("profile");
-}
-}
+//let product = require("../db/product");
 
-module.exports = indexController
+//let indexController = {
+ //   index : funcion (req, res) {
+   //     res.render("index", {title: "index"});
+    //}
+//};
+
+// module.exports = indexController;

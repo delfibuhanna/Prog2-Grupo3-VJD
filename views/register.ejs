@@ -85,21 +85,30 @@
 				<h2 class="products-title">Registrate</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// 
-				<br> Acá va el formulario de registro. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
-			<form action = "register.js" method= 'GET'>
+			<form class="Formulario" action = "register.js" method= 'GET'>
 				<div>
 				 <label for="Email">Email:</label>
-				 <input type="Email"name="Email" id="Mimail" placeholder="ejemplo@gmail.com"></input>
+				 <input type="email"name="Email" id="Mimail" placeholder="ejemplo@gmail.com"></input>
 				</div>
 				<div>
 				 <label for="usuario">Usuario:</label>
-				 <input type="usuraio" name="Usuario" id="miusuario" placeholder="usuario"></input>
+				 <input type="text" name="Usuario" id="miusuario" placeholder="usuario"></input>
+				</div>
+				<div>
+				<label for="Contraseña">Contraseña:</label>
+				<input type="password"name="pass" id="Micontraseña" placeholder="*******"></input>
+				</div>
+				<div>
+				<label for="Fecha de nacimiento">Fecha de nacimiento:</label>
+				<input type="date"name="fecha" id="Mifechadenacimiento" placeholder="DD/MM/YYYY"></input>
+				</div>
+				<div>
+				<label for="Nro de documento">Numero de documento:</label>
+				<input type="number"name="number" id="Midocumento" placeholder="ej: 45684492"></input>
+				</div>
+				<div>
+				<label for="Foto de perfil">Foto de perfil:</label>
+				<input type="text"name="Foto de perfil" id="Mifotodeperfil" placeholder="https://fotodeperfil.com"></input>
 				</div>
 				</form>
 
