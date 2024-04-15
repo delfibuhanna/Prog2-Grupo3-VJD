@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var productController = require("../controllers/productController");
+var productosController = require("../controllers/productosController");
 
-router.get("/",productController.index)
+router.get("/",productosController.index)
 
 module.exports = router;

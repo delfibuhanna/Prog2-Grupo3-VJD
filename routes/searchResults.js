@@ -1,5 +1,5 @@
 var express = require('express');
 var router = express.Router();
 
-const productAddController = require("../controllers/productAddController");
+var searchResultsController = require("../controllers/searchResultsControllers");
 module.exports = router;
