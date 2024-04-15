@@ -7,7 +7,6 @@ let usuariosController={
 }, 
   profileEdit: function(req,res){
     res.render("profileEdit", {title: "profileEdit"});
-
 }
 };
 
