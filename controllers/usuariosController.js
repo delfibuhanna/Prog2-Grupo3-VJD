@@ -2,12 +2,18 @@ const data = require("../db/productos");
 
 const usuariosController ={
     profile: function(req,res){
-        return res.render("profile", {title: "profile"});
+      return res.render("profile", {lista: data});
 
 }, 
   profileEdit: function(req,res){
-    res.render("profileEdit", {title: "profileEdit"});
+    res.render("profileEdit", {lista: data});
 },
+  login: function(req,res){
+    return res.render("login");
+},
+  register: function(req,res){
+    return res.render("register");
+}
 
 };
 

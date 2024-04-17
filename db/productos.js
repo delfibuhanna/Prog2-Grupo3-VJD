@@ -1,12 +1,12 @@
 
 let datosGarbarino = {
-    usuarios: [{
+    usuarios: [ {
         Mail: "vyoffe@udesa.edu.ar",
         Usuario: "vyoffe",
         Contrasenia: "****",
         FechaNacimiento: 2004-10-15,
         NúmeroDocumento: 46287573,
-        Foto: "/images/users/fotoDePerfilUsuario"
+        FotoUsuario: "/images/users/fotoDePerfilUsuario.jpeg"
     }],
 
     productos: 
