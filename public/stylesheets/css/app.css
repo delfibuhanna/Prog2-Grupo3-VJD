@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: hsl(0, 82%, 42%);
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -78,8 +78,10 @@ hr {
 
 .main-header_credit-link {
   font-size: 1.5em;
+  font-weight: bold;
   margin-top: 20px;
   text-align: center;
+  color: white;
 }
 
 .search-form {
@@ -130,6 +132,8 @@ hr {
 .left-navbar,
 .right-navbar {
   font-size: 1.5em;
+  font-weight: bold;
+  color: white;
 }
 
 .logout{
@@ -259,7 +263,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: #ed4848;
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -269,18 +273,18 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: white;
   font-size: 3.5em;
 }
 
 .footer-data h2 {
-  color: var(--gray);
+  color: white;
   font-size: 2.4em;
   font-weight: 400;
 }
 
 .footer-data p {
-  color: var(--gray);
+  color: white;
   font-size: 1.5em;
   font-weight: 300;
 }

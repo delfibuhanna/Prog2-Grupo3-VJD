@@ -1,11 +1,11 @@
-/*let productos = require("../db/productos");*/
+const data = require("../db/productos");
 
 const productosController = {
     product : function (req,res) {
-        res.render("product", {title: "product"});
+        res.render("product", {lista: data});
     },
     productAdd : function (req,res) {
-        res.render("productAdd", {title: "productAdd"});
+        res.render("productAdd", {lista: data});
     },
     searchResults : function (req,res) {
         res.render("searchResults",{title: "searchResults"});

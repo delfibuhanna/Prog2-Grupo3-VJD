@@ -1,8 +1,8 @@
-/*let productos = require("../db/productos");*/
+const data = require("../db/productos");
 
 let indexController= {
   index:function(req,res){
-      return res.render("index");
+      return res.render("index", {lista: data.productos});
 },
   login: function(req,res){
       return res.render("login");
@@ -13,4 +13,4 @@ let indexController= {
 }
 
 
-module.exports = indexController
+module.exports = indexController;

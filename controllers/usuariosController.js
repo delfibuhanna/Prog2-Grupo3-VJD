@@ -1,14 +1,14 @@
-//let productos = requiere ('../db/productos');
+const data = require("../db/productos");
 
-let usuariosController={
-    index: function(req,res){
-        res.render("profile", {title: "profile"});
+const usuariosController ={
+    profile: function(req,res){
+        return res.render("profile", {title: "profile"});
 
 }, 
   profileEdit: function(req,res){
     res.render("profileEdit", {title: "profileEdit"});
-}
-};
+},
 
+};
 
 module.exports= usuariosController;
