@@ -30,17 +30,19 @@
 			<form action = "/" method= 'GET'>
 				<div>
 				 <label for="Imagen">Imagen:</label>
-				 <input type="file"name="Imagen" id="Imagen"></input>
+				 <input type="file"name="Imagen" id="Imagen" required></input>
 				</div>
 				<div>
 				 <label for="NombreDelProducto">Nombre del producto:</label>
-				 <input type="text" name="Producto" id="MiProducto" placeholder="ej:lavarropas"></input>
+				 <input type="text" name="Producto" id="MiProducto" placeholder="ej:lavarropas" required></input>
 				</div>
 				<div>
 				<label for="Descripcion">Descripción:</label>
-				<input type="text" name="Descripcion" id="DescripcionDelProducto" placeholder="Describa su producto"></input>
+				<input type="text" name="Descripcion" id="DescripcionDelProducto" placeholder="Describa su producto" required></input>
 				</div>
-				<button class="button"  >Agregar producto</button>
+				<div>
+				<button class="button">Agregar productos</button>
+				</div>
 			</form>
 
 	<%- include("./partials/footer") %>

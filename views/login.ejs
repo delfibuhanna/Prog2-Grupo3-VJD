@@ -27,18 +27,19 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action = "/" method= 'GET'>
+			<form action = "/users/profile" method= 'GET'>
+				
 				<div>
 				 <label for="Usuario">Usuario:</label>
-				 <input type="Email"name="Usuario" id="MiUsuario"></input>
+				 <input type="Email"name="Usuario" id="MiUsuario" required></input>
 				</div>
 				<div>
 				 <label for="Contraseña">Contraseña:</label>
-				 <input type="password" name="pass" id="MiContraseña"></input>
+				 <input type="password" name="pass" id="MiContraseña" required></input>
 				</div>
 				<div>
 				<label for="Recordarme">Recordarme:</label>
-				<input type="checkbox" name="recordarme" value=""></input>
+				<input type="checkbox" name="recordarme" value="" required></input>
 				</div>
 				<div>
 				<button class="button">Iniciar sesión</button>

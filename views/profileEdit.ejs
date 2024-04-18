@@ -11,9 +11,9 @@
 	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="stylesheets/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="stylesheets/css/app.css">
+	<link rel="stylesheet" href="/stylesheets/css/app.css">
 </head>
 
 <body>
@@ -27,12 +27,37 @@
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de edición de datos del perfil de usuario. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos deñ usuario<br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+			<h2 class="col-12"> <i>			
+				<form class="Formulario" action = "/users/profile" method= 'GET'>
+				<div>
+				 <label for="Email">Email:</label>
+				 <input type="email"name="Email" id="Mimail" placeholder="ejemplo@gmail.com" required></input>
+				</div>
+				<div>
+				 <label for="usuario">Usuario:</label>
+				 <input type="text" name="Usuario" id="miusuario" placeholder="Pablo123" required></input>
+				</div>
+				<div>
+				<label for="Contraseña">Contraseña:</label>
+				<input type="password"name="pass" id="Micontraseña" placeholder="*******" required></input>
+				</div>
+				<div>
+				<label for="Fecha de nacimiento">Fecha de nacimiento:</label>
+				<input type="date"name="fecha" id="Mifechadenacimiento" placeholder="DD/MM/YYYY" required></input>
+				</div>
+				<div>
+				<label for="Nro de documento">Numero de documento:</label>
+				<input type="number"name="number" id="Midocumento" placeholder="ej: 45684492" required></input>
+				</div>
+				<div>
+				<label for="Foto de perfil">Foto de perfil:</label>
+				<input type="file"name="Foto de perfil" id="Mifotodeperfil" placeholder="https://fotodeperfil.com" required></input>
+				</div>
+			
+				<div>
+				<button class="button">Guardar cambios</button>
+				</div>
+				</form>
 
 	<%- include("./partials/footer") %>
 
