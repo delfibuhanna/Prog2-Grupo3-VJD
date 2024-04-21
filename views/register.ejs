@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<!-- Include Head -->
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="../public/images/logo-mercado-liebre.jpg" />
-
-	<title> Garbarino </title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/app.css">
-</head>
 
 <body>
 	
@@ -27,32 +11,32 @@
 				<h2 class="products-title">Registrate</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form class="Formulario" action = "/users/login" method= 'GET'>
-				<div>
-				 <label for="Email">Email:</label>
+			<form class="Formulario" action = "/users/login" method= 'GET' class="form">
+				<div class="div">
+				 <label for="Email">Email:</label class="label">
 				 <input type="email"name="Email" id="Mimail" placeholder="ejemplo@gmail.com" required></input>
 				</div>
-				<div>
-				 <label for="usuario">Usuario:</label>
+				<div class="div">
+				 <label for="usuario">Usuario:</label class="label">
 				 <input type="text" name="Usuario" id="miusuario" placeholder="Pablo123" required></input>
 				</div>
-				<div>
-				<label for="Contraseña">Contraseña:</label>
+				<div class="div">
+				<label for="Contraseña">Contraseña:</label class="label">
 				<input type="password"name="pass" id="Micontraseña" placeholder="*******" required></input>
 				</div>
-				<div>
-				<label for="Fecha de nacimiento">Fecha de nacimiento:</label>
+				<div class="div">
+				<label for="Fecha de nacimiento">Fecha de nacimiento:</label class="label">
 				<input type="date"name="fecha" id="Mifechadenacimiento" placeholder="DD/MM/YYYY" required></input>
 				</div>
-				<div>
-				<label for="Nro de documento">Numero de documento:</label>
+				<div class="div">
+				<label for="Nro de documento">Numero de documento:</label class="div">
 				<input type="number"name="number" id="Midocumento" placeholder="ej: 45684492" required></input>
 				</div>
-				<div>
-				<label for="Foto de perfil">Foto de perfil:</label>
+				<div class="div">
+				<label for="Foto de perfil">Foto de perfil:</label class="label">
 				<input type="text"name="Foto de perfil" id="Mifotodeperfil" placeholder="https://fotodeperfil.com" required></input>
 				</div>
-				<div>
+				<div class="div">
 				<button class="button">Registrarse</button>
 				</div>
 				</form>

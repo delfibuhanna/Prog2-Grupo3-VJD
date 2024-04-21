@@ -11,6 +11,5 @@ const productosController = {
         res.render("search-results", {lista:data.productos});
     }
 };
-
 module.exports = productosController;
 

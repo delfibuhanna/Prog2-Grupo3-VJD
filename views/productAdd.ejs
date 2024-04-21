@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<!-- Include Head -->
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="../public/images/logo-mercado-liebre.jpg" />
-
-	<title> Garbarino </title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/app.css">
-</head>
 
 <body>
 	
@@ -27,21 +11,21 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action = "/" method= 'GET'>
-				<div>
-				 <label for="Imagen">Imagen:</label>
+			<form action = "/" method= 'GET' class="form" >
+				<div class="div">
+				 <label for="Imagen">Imagen:</label class="label">
 				 <input type="file"name="Imagen" id="Imagen" required></input>
 				</div>
-				<div>
-				 <label for="NombreDelProducto">Nombre del producto:</label>
+				<div class="div">
+				 <label for="NombreDelProducto">Nombre del producto:</label class="label">
 				 <input type="text" name="Producto" id="MiProducto" placeholder="ej:lavarropas" required></input>
 				</div>
-				<div>
-				<label for="Descripcion">Descripción:</label>
+				<div class="div">
+				<label for="Descripcion">Descripción:</label class="label">
 				<input type="text" name="Descripcion" id="DescripcionDelProducto" placeholder="Describa su producto" required></input>
 				</div>
-				<div>
-				<button class="button">Agregar productos</button>
+				<div class="div">
+				<button class="button">Agregar productos</button class="button">
 				</div>
 			</form>
 

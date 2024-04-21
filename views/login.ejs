@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<!-- Include Head -->
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="../public/images/logo-mercado-liebre.jpg" />
-
-	<title> Garbarino </title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/app.css">
-</head>
 
 <body>
 	
@@ -27,22 +10,22 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action = "/users/profile" method= 'GET'>
+			<form action = "/users/profile" method= 'GET' class="form">
 				
-				<div>
-				 <label for="Usuario">Usuario:</label>
+				<div class="div">
+				 <label for="Usuario">Usuario:</label class="label">
 				 <input type="Email"name="Usuario" id="MiUsuario" required></input>
 				</div>
-				<div>
-				 <label for="Contraseña">Contraseña:</label>
+				<div class="div">
+				 <label for="Contraseña">Contraseña:</label class="label">
 				 <input type="password" name="pass" id="MiContraseña" required></input>
 				</div>
-				<div>
+				<div class="div">
 				<label for="Recordarme">Recordarme:</label>
 				<input type="checkbox" name="recordarme" value="" required></input>
 				</div>
-				<div>
-				<button class="button">Iniciar sesión</button>
+				<div class="div">
+				<button class="button">Iniciar sesión</button class="button">
 				</div>
 			</form>
 

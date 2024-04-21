@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<!-- Include Head -->
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="../public/images/logo-mercado-liebre.jpg" />
-	
-	<title> Garbarino </title>
-			<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/app.css">
-</head>
+
 <body>
 	
 	<%- include("./partials/headerLogueado") %>
@@ -35,6 +20,7 @@
 				</div>
 				<div>
 					<ul class="">
+						<li><%= lista.usuarios[0].Mail%> </li>
 						<li>8 productos</li>
 						<li>200 seguidores</li>
 						<li>300 comentarios</li>
@@ -58,7 +44,7 @@
 				<section class="product-box">
 					<a href="/product">
 						<figure class="product-box_image">
-							<img src= <%= lista.productos[i].foto %> alt="cafetera moulinex">
+							<img src= <%= lista.productos[i].foto %> alt="cafetera moulinex" class= "imagenProductos">
 						</figure>
 						<article class="product-box_data">
 							<h2><%= lista.productos[i].nombre %></h2>
