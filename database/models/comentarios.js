@@ -45,3 +45,4 @@ module.exports = function (sequelize, dataTypes) {
     
     return Comentario;
 }
+

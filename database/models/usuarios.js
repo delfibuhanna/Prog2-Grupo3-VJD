@@ -1,20 +1,35 @@
 const { ForeignKeyConstraintError } = require("sequelize");
 
 module.exports = function (sequelize, dataTypes) {
-    let alias = "usuairos";
+    let alias = "Usuario";
     let cols = {
         id: {
             autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER
         },
-        usuarios_id: {
-            type: dataTypes.INTEGER
+        nombre: {
+            type: dataTypes.STRING
         },
-        productos_id: {
-            type: dataTypes.INTEGER
+        apellido: {
+            type: dataTypes.STRING
         },
-        texto_comentario: {
+        mail: {
+            type: dataTypes.STRING
+        },
+        usuario: {
+            type: dataTypes.STRING
+        },
+        contrasenia: {
+            type: dataTypes.STRING
+        },
+        fechaNacimiento: {
+            type: dataTypes.DATE
+        },
+        numeroDocumento: {
+            type: dataTypes.INT
+        },
+        foto: {
             type: dataTypes.STRING
         },
         createdAt: {
@@ -26,24 +41,21 @@ module.exports = function (sequelize, dataTypes) {
         deleteAt: {
             type: dataTypes.DATA
         }}
-    }
+    
     let config = {
         tableName: "proy",
         timestamps: false,
         underscored: true
-    }
-    let usuarios = sequelize.define(alias, cols, config);
-    usuarios.associate = function (models) {
-        usuarios.belongsTo(models.prodcutos,{
+    };
+    let Usuario = sequelize.define(alias, cols, config);
+    Usuario.associate = function (models) {
+        Usuario.hasMany(models.prodcutos,{
             as: "productos",
-          /*ForeignKey*/
+        });
+    
+    Usuario.hasMany(models.comentarios,{
+            as: "comentarios",
         });
     }
-    let usuarios = sequelize.define(alias, cols, config);
-    usuarios.associate = function (models) {
-        usuarios.belongsTo(models.comentarios,{
-            as: "comentarios",
-          /*ForeignKey*/
-        })
-    return usuarios;
+    return Usuario;
 }
