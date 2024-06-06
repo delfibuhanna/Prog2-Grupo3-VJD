@@ -49,12 +49,12 @@ module.exports = function (sequelize, dataTypes) {
     };
     let Usuario = sequelize.define(alias, cols, config);
     Usuario.associate = function (models) {
-        Usuario.hasMany(models.prodcutos,{
-            as: "productos",
+        Usuario.hasMany(models.productos,{
+            as: "Producto",
         });
     
     Usuario.hasMany(models.comentarios,{
-            as: "comentarios",
+            as: "Comentario",
         });
     }
     return Usuario;
