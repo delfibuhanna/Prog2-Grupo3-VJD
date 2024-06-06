@@ -25,7 +25,7 @@ module.exports = function (sequelize, dataTypes) {
         },
         deleteAt: {
             type: dataTypes.DATA
-        }
+        }}
     }
     let config = {
         tableName: "proy",
