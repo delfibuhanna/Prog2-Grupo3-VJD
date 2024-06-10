@@ -3,7 +3,7 @@ const data = require("../database/models");
 let indexController= {
   index:function(req,res){
 
-     data.Usuario.findAll()
+     data.Comentario.findAll()
   .then(function (resultado) {
     return res.send({lista: resultado});
 

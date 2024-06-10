@@ -47,15 +47,14 @@ module.exports = function (sequelize, dataTypes) {
         underscored: false
     };
     let Usuario = sequelize.define(alias, cols, config);
-    /*Usuario.associate = function (models) {
-        Usuario.hasMany(models.prodcutos, {
+    Usuario.associate = function (models) {
+       Usuario.hasMany(models.Producto, {
             as: "productos",
         });
 
-        Usuario.hasMany(models.comentarios, {
+        Usuario.hasMany(models.Comentario, {
             as: "comentarios",
         });
-        ...
-    }*/
+    }
     return Usuario;
 }

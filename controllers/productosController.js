@@ -1,15 +1,14 @@
 const data = require("../database/models");
-const { Association } = require("sequelize");
-const { productos } = require("../db/productos");
 
 const productosController = {
     index: function (req,res) {
-        db.Producto.findAll({
+        let relaciones ={
             include: [
-                {association: "Usuario"},
-                {association: "Comentario"}
+               // {association: "usuarios"},
+                //{association: "comentarios"}
             ]
-        })
+        }
+        db.Producto.findAll()
         
     .then(function(resultado) {
         return res.render("index",{lista: resultado})

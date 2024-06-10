@@ -18,29 +18,27 @@ module.exports = function (sequelize, dataTypes) {
         createdAt: {
             type: dataTypes.DATE
         },
-        updateAt: {
+        updatedAt: {
             type: dataTypes.DATE
         },
-        deleteAt: {
+        deletedAt: {
             type: dataTypes.DATE
         }}
     let config = {
-        tableName: "productos",
-        timestamps: false,
-        underscored: true
+        tableName: "comentarios",
+        timestamps: true,
+        underscored: false
     };
     
     let Comentario = sequelize.define(alias, cols, config);
     Comentario.associate = function (models){
         Comentario.belongsTo(models.Usuario,{
             as: "usuarios",
-            as: "Usuario",
             foreignKey: "usuarios_id"
         });
 
     Comentario.belongsTo(models.Producto,{
             as: "productos",
-            as: "Producto",
             foreignKey: "productos_id"
         });
     }

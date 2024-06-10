@@ -34,13 +34,16 @@ module.exports = function (sequelize, dataTypes) {
         underscored: false
     };
     let Producto = sequelize.define(alias, cols, config);
-    /* Producto.associate = function (models){
-        Producto.belongsTo(models.Usuario,{
-            as: "Usuario",
+    Producto.associate = function (models){
+    Producto.belongsTo(models.Usuario,{
+            as: "usuarios",
             foreingKey: "usuarios_id"
         });
     Producto.hasMany(models.Comentario,{
-        as: "Comentario",
-        }) */
-    return Producto;
-};
+        as: "comentarios",
+         /* foreingKey: */
+        }) 
+    
+    }
+return Producto;
+}
