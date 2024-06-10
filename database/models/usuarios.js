@@ -1,5 +1,3 @@
-const { ForeignKeyConstraintError } = require("sequelize");
-
 module.exports = function (sequelize, dataTypes) {
     let alias = "Usuario";
     let cols = {
@@ -27,35 +25,36 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.DATE
         },
         numeroDocumento: {
-            type: dataTypes.INT
+            type: dataTypes.INTEGER
         },
         foto: {
             type: dataTypes.STRING
         },
         createdAt: {
-            type: dataTypes.DATA
+            type: dataTypes.DATE
         },
-        updateAt: {
-            type: dataTypes.DATA
+        updatedAt: {
+            type: dataTypes.DATE
         },
-        deleteAt: {
-            type: dataTypes.DATA
-        }}
-    
+        deletedAt: {
+            type: dataTypes.DATE
+        }
+    };
+
     let config = {
-        tableName: "proy",
-        timestamps: false,
-        underscored: true
+        tableName: "usuarios",
+        timestamps: true,
+        underscored: false
     };
     let Usuario = sequelize.define(alias, cols, config);
-    Usuario.associate = function (models) {
-        Usuario.hasMany(models.prodcutos,{
+    /*Usuario.associate = function (models) {
+        Usuario.hasMany(models.prodcutos, {
             as: "productos",
         });
-    
-    Usuario.hasMany(models.comentarios,{
+
+        Usuario.hasMany(models.comentarios, {
             as: "comentarios",
         });
-    }
+    }*/
     return Usuario;
 }

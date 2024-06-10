@@ -16,28 +16,28 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         createdAt: {
-            type: dataTypes.DATA
+            type: dataTypes.DATE
         },
         updateAt: {
-            type: dataTypes.DATA
+            type: dataTypes.DATE
         },
         deleteAt: {
-            type: dataTypes.DATA
+            type: dataTypes.DATE
         }}
     let config = {
-        tableName: "proy",
+        tableName: "productos",
         timestamps: false,
         underscored: true
     };
     
     let Comentario = sequelize.define(alias, cols, config);
     Comentario.associate = function (models){
-        Comentario.belongsTo(models.usuarios,{
+        Comentario.belongsTo(models.Usuario,{
             as: "usuarios",
             foreignKey: "usuarios_id"
         });
 
-    Comentario.belongsTo(models.productos,{
+    Comentario.belongsTo(models.Producto,{
             as: "productos",
             foreignKey: "productos_id"
         });
