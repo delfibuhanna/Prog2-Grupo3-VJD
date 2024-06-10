@@ -28,7 +28,6 @@ let validaciones = [
 
     /* body("Usuario") no sabemos si hay que poner algo mas o no */
 ];
-const { body } = require("express-validator");
 const { where } = require('sequelize');
 let validaciones_login = [ 
     body("email")

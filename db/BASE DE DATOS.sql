@@ -22,13 +22,13 @@ INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimient
 VALUES(DEFAULT, 'julieta','mielnicki','julimielnicki@gmail.com','jmielnicki', '*****','2005-05-21', 45684492, 'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
 
 INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES(DEFAULT,'delfina','buhanna','delfibuhanna@gmial.com', 'dbuhanna', '*****', 2004-07-01, 46026647, 'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
+VALUES(DEFAULT,'delfina','buhanna','delfibuhanna@gmial.com', 'dbuhanna', '*****', '2004-07-01', 46026647, 'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
 
 INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES(DEFAULT,'marco','viacava','mviacava@gmail.com','mviacava','*****', 2004-01-30,45421869,'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
+VALUES(DEFAULT,'marco','viacava','mviacava@gmail.com','mviacava','*****', '2004-01-30',45421869,'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
 
 INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES(DEFAULT,'nicolas','klersferld','nicokler@gmail.com','nkler','*****',2005-03-08,46223367,'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
+VALUES(DEFAULT,'nicolas','klersferld','nicokler@gmail.com','nkler','*****','2005-03-08',46223367,'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
 
 CREATE TABLE productos (
 id 					INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,

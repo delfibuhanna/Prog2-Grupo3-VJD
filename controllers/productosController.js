@@ -11,13 +11,13 @@ const productosController = {
             ]
         })
         
-            .then(function(resultado) {
-                return res.render("index",{lista: resultado})
+    .then(function(resultado) {
+        return res.render("index",{lista: resultado})
             
-            }).catch(function (errores) {
-                return console.log(errores);;
+    }).catch(function (errores) {
+        return console.log(errores);;
                 
-            })
+    })
     },
     
     product : function (req,res) {
