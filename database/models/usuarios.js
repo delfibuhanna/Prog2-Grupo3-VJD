@@ -55,6 +55,7 @@ module.exports = function (sequelize, dataTypes) {
         Usuario.hasMany(models.comentarios, {
             as: "comentarios",
         });
+        ...
     }*/
     return Usuario;
 }
