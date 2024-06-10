@@ -6,15 +6,49 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER
         },
-        name: {
+        usuarios_id: {
+            type: dataTypes.INTEGER
+        },
+        nombre: {
             type: dataTypes.STRING
+        },
+        foto: {
+            type: dataTypes.STRING
+        },
+        descripcion: {
+            type: dataTypes.STRING
+        },
+        createdAt: {
+            type: dataTypes.DATA
+        },
+        updateAt: {
+            type: dataTypes.DATA
+        },
+        deleteAt: {
+            type: dataTypes.DATA
         }
     }
     let config = {
         tableName: "productos",
         timestamps: false,
         underscored: true
+    };
+    let Producto = sequelize.define(alias, cols, config);
+    Producto.associate = function (models){
+        Producto.belongsTo(models.Usuario,{
+            as: "Usuario",
+            foreingKey: "usuarios_id"
+        });
+    Producto.hasMany(models.Comentario,{
+        as: "Comentario",
+        })
+
     }
+<<<<<<< HEAD
     let Producto = sequelize.define(alias, cols, config);
     return Producto;
 }
+=======
+    return productos;
+}
+>>>>>>> 5ee87bf2c150efcd361c126522e5db64c49e7cd2
