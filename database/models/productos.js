@@ -19,36 +19,28 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         createdAt: {
-            type: dataTypes.DATA
+            type: dataTypes.DATE
         },
-        updateAt: {
-            type: dataTypes.DATA
+        updatedAt: {
+            type: dataTypes.DATE
         },
-        deleteAt: {
-            type: dataTypes.DATA
+        deletedAt: {
+            type: dataTypes.DATE
         }
     }
     let config = {
         tableName: "productos",
-        timestamps: false,
-        underscored: true
+        timestamps: true,
+        underscored: false
     };
     let Producto = sequelize.define(alias, cols, config);
-    Producto.associate = function (models){
+    /* Producto.associate = function (models){
         Producto.belongsTo(models.Usuario,{
             as: "Usuario",
             foreingKey: "usuarios_id"
         });
     Producto.hasMany(models.Comentario,{
         as: "Comentario",
-        })
-
-    }
-<<<<<<< HEAD
-    let Producto = sequelize.define(alias, cols, config);
+        }) */
     return Producto;
-}
-=======
-    return productos;
-}
->>>>>>> 5ee87bf2c150efcd361c126522e5db64c49e7cd2
+};

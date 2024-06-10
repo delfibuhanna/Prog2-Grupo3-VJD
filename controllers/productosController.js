@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 const data = require("../database/models");
-=======
 const { Association } = require("sequelize");
-const data = require("../db/productos/models");
 const { productos } = require("../db/productos");
->>>>>>> 5ee87bf2c150efcd361c126522e5db64c49e7cd2
 
 const productosController = {
     index: function (req,res) {
