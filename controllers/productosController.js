@@ -1,14 +1,14 @@
 const data = require("../database/models");
 
 const productosController = {
-    index: function (req,res) {
+    /* index: function (req,res) {
         let relaciones ={
             include: [
                // {association: "usuarios"},
                 //{association: "comentarios"}
             ]
         }
-        db.Producto.findAll()
+        data.Producto.findAll()
         
     .then(function(resultado) {
         return res.render("index",{lista: resultado})
@@ -17,7 +17,7 @@ const productosController = {
         return console.log(errores);;
                 
     })
-    },
+    }, */
     
     product : function (req,res) {
         res.render("product", {lista: data});
