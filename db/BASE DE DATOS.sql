@@ -1,5 +1,5 @@
-CREATE SCHEMA proy;
-USE proy;
+CREATE SCHEMA proyecto1;
+USE proyecto1;
 CREATE TABLE usuarios (
 id 					INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 nombre 				VARCHAR(250) 	NOT NULL,
@@ -9,32 +9,32 @@ usuario 			VARCHAR(250) 	NOT NULL,
 contrasenia 		VARCHAR(250) 	NOT NULL,
 fechaNacimiento   	DATE 			NOT NULL,
 numeroDocumento 	INT 			NOT NULL,
-foto 				VARCHAR(250) 	NOT NULL,
+fotoUsuario		    VARCHAR(250) 	NOT NULL,
 createdAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ,
 updatedAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAt           TIMESTAMP       NULL
 );
 
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES(DEFAULT, 'victoria','yoffe','vyoffe@udesa.edu.ar','vyoffe','******','2004-10-15',46287573,'fotoDePerfil.png', DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,fotoUsuario,createdAt,updatedAt,deletedAt) 
+VALUES(DEFAULT, 'victoria','yoffe','vyoffe@udesa.edu.ar','vyoffe','','2004-10-15',46287573,'fotoDePerfil.png', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES(DEFAULT, 'julieta','mielnicki','julimielnicki@gmail.com','jmielnicki', '*****','2005-05-21', 45684492, 'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
+INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,fotoUsuario,createdAt,updatedAt,deletedAt) 
+VALUES(DEFAULT, 'julieta','mielnicki','julimielnicki@gmail.com','jmielnicki', '*','2005-05-21', 45684492, 'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
 
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES(DEFAULT,'delfina','buhanna','delfibuhanna@gmial.com', 'dbuhanna', '*****', '2004-07-01', 46026647, 'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
+INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,fotoUsuario,createdAt,updatedAt,deletedAt) 
+VALUES(DEFAULT,'delfina','buhanna','delfibuhanna@gmial.com', 'dbuhanna', '*', '2004-07-01', 46026647, 'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
 
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES(DEFAULT,'marco','viacava','mviacava@gmail.com','mviacava','*****', '2004-01-30',45421869,'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
+INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,fotoUsuario,createdAt,updatedAt,deletedAt) 
+VALUES(DEFAULT,'marco','viacava','mviacava@gmail.com','mviacava','*', '2004-01-30',45421869,'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
 
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES(DEFAULT,'nicolas','klersferld','nicokler@gmail.com','nkler','*****','2005-03-08',46223367,'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
+INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,fotoUsuario,createdAt,updatedAt,deletedAt) 
+VALUES(DEFAULT,'nicolas','klersferld','nicokler@gmail.com','nkler','*','2005-03-08',46223367,'fotoDePerfil.png', DEFAULT, DEFAULT,DEFAULT);
 
 CREATE TABLE productos (
 id 					INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-usuariosId         INT             UNSIGNED,
+usuariosId          INT             UNSIGNED,
 nombre 				VARCHAR(250) 	NOT NULL,
-foto 				VARCHAR(250) 	NOT NULL,
+fotoProducto 		VARCHAR(250) 	NOT NULL,
 descripcion         VARCHAR(250)    NOT NULL,
 createdAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ,
 updatedAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -43,34 +43,34 @@ deletedAt           TIMESTAMP       NULL,
 FOREIGN KEY (usuariosId) REFERENCES usuarios(id)
 );
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES (DEFAULT, 1, 'licuadora','fotoDeProducto.png', 'Licuadora Moulinex Optimix Plus Lm270558 550 W 2 Lts Roja Color Rojo',DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES (DEFAULT,2,'microondas','fotoDeProducto.png','Microondas Whirlpool Mcp346sl Color Negro Plateado',DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES (DEFAULT, 3, 'batidora', 'fotoDeProducto.png','Batidora De Mano Moulinex Sx1502ar Color Blanco Frecuencia 50 Hz x 60 Hz',DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES (DEFAULT,4, 'minipimer', 'fotoDeProducto.png','Mixer Minipimer Mezcladora De Mano Gadnic Mp700 350w 220v Color Negro',DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES (DEFAULT,5,'cafetera','fotoDeProducto.png', 'Cafetera Peabody Smartchef Pe-ct4207 Automática De Filtro P2 Color Plata',DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES (DEFAULT, 1, 'lavasecarropas','fotoDeProducto.png','Lavasecarropas automático Candy Alisè GVSW286 blanco 8kg 220 V',DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES( DEFAULT, 2, 'heladera', 'fotoDeProducto.png', 'Heladera inverter no frost Whirlpool WRE57K2 inox con freezer 443L 220V',DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES(DEFAULT,3, 'tostadora', 'fotoDeProducto.png','Tostadora Electrica 4 Panes 1300 Watts 6 Niveles Daewoo Color Blanco', DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES (DEFAULT, 4, 'freidora de aire', 'fotoDeProducto.png','Freidora De Aire Sin Aceite Horno Panel Digital 12 L Unnic Color Negro', DEFAULT,DEFAULT,DEFAULT);
 
-INSERT INTO productos (id,usuariosId,nombre,foto,descripcion,createdAt,updatedAt,deletedAt)
+INSERT INTO productos (id,usuariosId,nombre,fotoProducto,descripcion,createdAt,updatedAt,deletedAt)
 VALUES (DEFAULT,5,'lavavajillas','fotoDeProducto.png','Lavavajillas Whirlpool WSFO3T2 de 10 cubiertos acero inoxidable 220V - 240V',  DEFAULT,DEFAULT,DEFAULT);
 
 CREATE TABLE comentarios (

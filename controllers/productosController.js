@@ -1,23 +1,23 @@
 const data = require("../database/models");
 
 const productosController = {
-    /* index: function (req,res) {
+    index: function (req,res) {
         let relaciones ={
             include: [
-               // {association: "usuarios"},
-                //{association: "comentarios"}
+                {association: "Usuario"},
+                {association: "Comentario"}
             ]
         }
         data.Producto.findAll()
         
-    .then(function(resultado) {
-        return res.render("index",{lista: resultado})
+            .then(function(resultado) {
+                return res.render("index",{lista: resultado})
             
-    }).catch(function (errores) {
-        return console.log(errores);;
+            }).catch(function (errores) {
+                return console.log(errores);;
                 
-    })
-    }, */
+            })
+    }, 
     
     product : function (req,res) {
         res.render("product", {lista: data});

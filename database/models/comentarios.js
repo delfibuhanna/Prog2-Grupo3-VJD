@@ -6,13 +6,13 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER
         },
-        usuarios_id: {
+        usuariosId: {
             type: dataTypes.INTEGER
         },
-        productos_id: {
+        productosId: {
             type: dataTypes.INTEGER
         },
-        texto_comentario: {
+        textoComentario: {
             type: dataTypes.STRING
         },
         createdAt: {

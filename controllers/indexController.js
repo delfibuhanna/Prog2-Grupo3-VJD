@@ -1,4 +1,3 @@
-const { Association } = require("sequelize");
 const data = require("../database/models");
 
 let indexController= {
@@ -10,7 +9,7 @@ let indexController= {
       ]
     })
     .then(function (resultado) {
-      return res.send({lista: resultado});
+      return res.render("index", {lista: data});
 
   }).catch (function (errores) {
       return console.log(errores);;
