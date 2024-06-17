@@ -27,7 +27,7 @@ module.exports = function (sequelize, dataTypes) {
         numeroDocumento: {
             type: dataTypes.INTEGER
         },
-        fotoUsuario: {
+        foto: {
             type: dataTypes.STRING
         },
         createdAt: {
@@ -44,7 +44,7 @@ module.exports = function (sequelize, dataTypes) {
     let config = {
         tableName: "usuarios",
         timestamps: true,
-        underscored: true
+        underscored: false
     };
     let Usuario = sequelize.define(alias, cols, config);
     Usuario.associate = function (models) {
