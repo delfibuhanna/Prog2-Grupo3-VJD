@@ -8,25 +8,32 @@ router.get("/register", usuariosController.register);
 router.get('/profile', usuariosController.profile);
 router.get("/profileEdit", usuariosController.profileEdit);
 
-/*const { body } = require("express-validator");
+const { body } = require("express-validator");
 let validaciones = [ 
     body("Email")
         .notEmpty().withMessage("Debes completar el email").bail()
         .isEmail()
-        .custom(function(value) {
+        .custom(function(value, {req}) {
             db.usuarios.findOne({
-                where:{ email:value },
+                where:{ email:req.body.mail },
             })
-            .then(function(usuarios) {
-                if (usuarios) {
-                    throw new Error("El email ingresado ya existe");
-                }
+                .then(function(usuario) {
+                    if (usuario) {
+                        throw new Error("El email ingresado ya existe");
+                    }
             })
         }),
+    body("usuario")
+        .notEmpty().withMessage("Debes completar el nombre de usuario").bail(),
     body("pass")
         .isLength({min: 4 }).withMessage("La contraseña debe tener al menos 4 caracteres"),
 
 ];
+router.get("/register", usuariosController.register);
+router.post('/register', validaciones, usuariosController.store);
+
+module.exports =router;
+
     /* body("Usuario") no sabemos si hay que poner algo mas o no */
 
 const { where } = require('sequelize');

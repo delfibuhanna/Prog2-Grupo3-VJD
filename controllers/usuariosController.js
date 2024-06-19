@@ -1,4 +1,5 @@
 const data = require("../database/models");
+const bcrypt = require("bcryptjs");
 
 const usuariosController ={
     profile: function(req,res){
