@@ -1,5 +1,7 @@
 const data = require("../database/models");
 const bcrypt = require("bcryptjs");
+const { validationResult } = require('express-validator');
+
 
 const usuariosController ={
     profile: function(req,res){
@@ -19,16 +21,17 @@ loginUser: (req, res)=>{
   let form = req.body;
 
   let filtro = {
-      where: [{email: form.email}]
+      where: [{mail: form.email}]
   };
 
-  db.User.findOne(filtro)
+  data.Usuario.findOne(filtro)
   .then((result) => {
 
       if (result == null) return res.send("No existe el mail " +  form.email)
       
 
       let check = bcrypt.compareSync(form.Contrasenia, result.contrasenia);
+      
       if (check) {
           req.session.user = result;
 
@@ -36,10 +39,18 @@ loginUser: (req, res)=>{
           if (form.rememberme != undefined) {
               res.cookie("userId", result.id, {maxAge: 1000 * 60 * 15});
           }
-          return res.redirect("/users");
+          return res.redirect("/");
       } else {
           return res.send("La contraseña es incorrecta")
       }
+     /* store: (req, res) => {
+        let errores = validationResult(req);
+        if (errores.isEmpty()){
+          let form = req.body;
+          let 
+          return res.render ("")
+        }
+      } */
       
      
 

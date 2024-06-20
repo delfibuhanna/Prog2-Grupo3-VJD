@@ -10,11 +10,14 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action = "/users/profile" method= 'GET' class="form">
+			<form action = "/Prog2-Grupo3-VJD/views/profile.ejs" method= 'POST' class="form">
 				
 				<div class="div">
 				 <label for="Usuario">Usuario:</label class="label">
 				 <input type="Email"name="email" id="MiUsuario" required></input>
+				<% if (locals.error && error.email){ %>
+					<p class= "error"> <%= error.email.msg %></p>
+					<% } %>
 				</div>
 				<div class="div">
 				 <label for="Contraseña">Contraseña:</label class="label">
