@@ -43,22 +43,42 @@ loginUser: (req, res)=>{
       } else {
           return res.send("La contraseña es incorrecta")
       }
-     /* store: (req, res) => {
-        let errores = validationResult(req);
-        if (errores.isEmpty()){
-          let form = req.body;
-          let 
-          return res.render ("")
-        }
-      } */
       
-     
-
   }).catch((err) => {
       return console.log(err);
-  });}
+  });
+},
+create: (req, res) => {
+  res.render("/users/register")
+},
+store: function(req, res) {
+  let errores = validationResult(req);
+  res.send(errors);
+   if (errores.isEmpty()){
+    let form = req.body;
+    let usuarios = {
+        mail: form.Email,
+        nombre: form.usuario,
+        contrasenia: bcrypt.hashSync(form.pass, 12),
+        fechaNacimiento: form.fecha,
+        numeroNacimiento: form.number,
+        foto: "/images/users" + form.fotoDePerfil
+    };
+     data.Usuario.create(usuarios)
+      .then(function (resultado) {
+          return res.redirect("/users/login");
+      })
+      .catch(function (error) {
+        return console.log(error); 
+      }); 
+  
+  } else{
+    return res.render("/users/register", {errors: errors.mapped(), old: req.body})
+  } 
+}, 
 
-};
+
+}; 
 
 
 module.exports= usuariosController;

@@ -10,14 +10,14 @@ router.get("/profileEdit", usuariosController.profileEdit); */
 
 const data = require("../database/models")
 
-/*const { body } = require("express-validator");
+const { body } = require("express-validator");
 let validaciones = [ 
     body("Email")
         .notEmpty().withMessage("Debes completar el email").bail()
-        .isEmail()
-        .custom(function(value) {
-            db.usuarios.findOne({
-                where:{ email:value },
+        .isEmail().withMessage("Ingrese un mail válido")
+        .custom(function(value, {req}) {
+            return db.usuarios.findOne({
+                where:{ email:req.body.Email},
             })
             .then(function(usuarios) {
                 if (usuarios) {
@@ -25,14 +25,18 @@ let validaciones = [
                 }
             })
         }),
+    body ("Usuario")
+        .notEmpty().withMessage("Ingrese un nombre de usuario").bail(),
     body("pass")
         .isLength({min: 4 }).withMessage("La contraseña debe tener al menos 4 caracteres"),
 
 ];
-    /* body("Usuario") no sabemos si hay que poner algo mas o no */
 
-const { where } = require('sequelize');
-const { body } = require('express-validator');
+// router.get("/register", usuariosController.register);
+// router.post("/register", validaciones, usuariosController.store);
+
+
+ /* const { where } = require('sequelize');
 const indexController = require('../controllers/indexController');
 let validaciones_login = [ 
     body("email")
@@ -66,9 +70,9 @@ let validaciones_login = [
     ]*/
 
    
-router.get("/",usuariosController.index);
+/* router.get("/",usuariosController.index);
 router.get("/create", usuariosController.create);
-router.post("/login", validaciones_login, usuariosController.store);
+router.post("/login", validaciones_login, usuariosController.store); */
 
 
 module.exports = router;
