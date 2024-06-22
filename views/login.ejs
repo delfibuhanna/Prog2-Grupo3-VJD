@@ -10,14 +10,11 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action = "/Prog2-Grupo3-VJD/views/profile.ejs" method= 'POST' class="form">
+			<form action = "/users/login" method= 'POST' class="form">
 				
 				<div class="div">
 				 <label for="Usuario">Usuario:</label class="label">
 				 <input type="Email"name="email" id="MiUsuario" required></input>
-				<% if (locals.error && error.email){ %>
-					<p class= "error"> <%= error.email.msg %></p>
-					<% } %>
 				</div>
 				<div class="div">
 				 <label for="Contraseña">Contraseña:</label class="label">
@@ -25,7 +22,7 @@
 				</div>
 				<div class="div">
 				<label for="Recordarme">Recordarme:</label>
-				<input type="checkbox" name="recordarme" value="" ></input>
+				<input type="checkbox" name="rememberme" value="" ></input>
 				</div>
 				<div class="div">
 				<button class="button">Iniciar sesión</button class="button">

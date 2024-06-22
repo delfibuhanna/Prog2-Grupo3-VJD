@@ -7,11 +7,11 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src= <%= lista.usuarios.foto %> alt="foto de perfil" class="foto-perfil">
+				<img src= <%= lista.foto %> alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><%= lista.usuarios.nombre %>
+					<h1 class="main-title"><%= lista.nombre %>
 						<a href="/users/profileEdit">
 							<i class="fas fa-cog"></i>
 						</a>
@@ -20,10 +20,10 @@
 				</div>
 				<div>
 					<ul class="">
-						<li><%= lista.usuarios[0].mail%> </li>
-						<li>8 productos</li>
+						<li><%= lista.mail%> </li>
+						<li><%= lista.Producto.length %></li>
 						<li>200 seguidores</li>
-						<li>300 comentarios</li>
+						<li><%= lista.Comentario.length %></li>
 					</ul>
 				</div>
 			</div>
@@ -39,18 +39,18 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			
-			<% for (let i = 2; i < lista.productos.length; i++) { %>
+			<% for (let i = 0; i < lista.Producto.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/product">
+					<a href="/id/<%= lista.Producto[i].productoId %>">
 						
 						<figure class="product-box_image">
-							<img src= <%= lista.productos[i].foto %> alt="cafetera moulinex" class= "imagenProductos">
+							<img src= <%= lista.Producto[i].foto %> alt="cafetera moulinex" class= "imagenProductos">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= lista.productos[i].nombre %></h2>
-							<p><%= lista.productos[i].descripcion %></p>
-							<p>Comentarios: <%= lista.productos[i].comentarios.length %></p>
+							<h2><%= lista.Producto[i].nombre %></h2>
+							<p><%= lista.Producto[i].descripcion %></p>
+							<p>Comentarios: <%= lista[i].Comentario.length %></p>
 						</article>
 					</a>
 				</section>

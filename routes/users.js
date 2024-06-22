@@ -3,10 +3,10 @@ var router = express.Router();
 
 var usuariosController = require("../controllers/usuariosController");
 
-/* 
+
 router.get("/register", usuariosController.register);
 router.get('/profile', usuariosController.profile);
-router.get("/profileEdit", usuariosController.profileEdit); */
+router.get("/profileEdit", usuariosController.profileEdit); 
 
 const data = require("../database/models")
 
@@ -32,8 +32,12 @@ let validaciones = [
 
 ];
 
-// router.get("/register", usuariosController.register);
-// router.post("/register", validaciones, usuariosController.store);
+router.get("/register", usuariosController.register);
+router.post("/register", validaciones, usuariosController.store);
+router.post('/logout',  usuariosController.logout);
+router.post("/login", usuariosController.loginUser);
+router.get("/login", usuariosController.login);
+router.get('/profile/:id', usuariosController.profile);
 
 
  /* const { where } = require('sequelize');
@@ -72,8 +76,10 @@ let validaciones_login = [
    
 /* router.get("/",usuariosController.index);
 router.get("/create", usuariosController.create);
-router.post("/login", validaciones_login, usuariosController.store); */
+ */
+
 
 
 module.exports = router;
+
 
