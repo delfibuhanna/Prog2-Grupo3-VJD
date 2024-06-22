@@ -1,110 +1,106 @@
-const data = require("../database/models");
-const bcrypt = require("bcryptjs");
-const { validationResult } = require('express-validator');
-const { Association } = require("sequelize");
+const { Producto, Usuario, Comentario, data } = require("../database/models");
+const { Op } = require("sequelize");
 
-
-const usuariosController = {
-  profile: function (req, res) {
-    let id = req.params.id
-    data.Usuario.findByPk(id, {
-      include: [
-        {
-          association: "Comentario",
-        },
-        {
-          association: "Producto",
-          include: [{ association: "Comentario" }]
+const productosController = {
+    index: function (req,res) {
+        let relaciones ={
+            include: [
+                {association: "Usuario"},
+                {association: "Comentario"}
+            ]
         }
-      ]
-    })
-      .then(function (resultado){
-        return res.render( "profile" ,{ lista: resultado })
-      }).catch(function (errores) {
-        return console.log(errores);
-      })
+        Producto.findAll()
+        
+            .then(function(resultado) {
+                return res.render("index",{lista: resultado})
+            
+            }).catch(function (errores) {
+                return console.log(errores);;
+                
+            })
+    },
+    
+    product: function (req, res) {
+        const id = req.params.id; // Obtiene el ID del producto desde los parámetros de la ruta
+        data.Producto.findByPk(id) // Busca el producto por su Primary Key (ID)
+            .then(function(producto) {
+                if (producto) {
+                    res.render("product", { producto: producto }); // Si encuentra el producto, renderiza la vista 'product' con los datos del producto
+                } else {
+                    res.status(404).send('Producto no encontrado'); // Si no encuentra el producto, envía un error 404
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+                res.status(500).send('Error interno del servidor'); // Manejo de errores
+            });
+    },
+    productAdd : function (req,res) {
+        res.render("productAdd", {lista: data});
+    },
+    searchResults : function (req,res) {
+        let terminoBusqueda = req.query.search;
+        console.log("termino de busqueda", terminoBusqueda)
+        Producto.findAll({
+            where: {
+                [Op.or]: [
+                    {
+                        nombre: {
+                            [Op.like]: `%${terminoBusqueda}%` // Busca productos que contengan el término de búsqueda en el nombre
+                        }
+                    },
+                    {
+                        descripcion: {
+                            [Op.like]: `%${terminoBusqueda}%` // Busca productos que contengan el término de búsqueda en la descripción
+                        }
+                    }
+                ]
+            },
+            include: [
+                { model: Usuario, as: "Usuario"},
+                { model: Comentario, as: "Comentario"}
+            ],
+            order: [['createdAt', 'DESC']]
+        })
+        .then(function(resultado) {
+            console.log('Resultados de búsqueda:', resultado);
+            if (!resultado && resultado.length == 0) {
+                // Asegura que se pase una lista vacía si no hay resultados
+                return res.render("search-results", { lista: [], message: "No hay resultados para su criterio de búsqueda" });
+            } else {
+                return res.render("search-results", { lista: resultado });
+            }
+        })
+        .catch(function (errores) {
+            console.log(errores);
+            return res.status(500).send('Error interno del servidor');
+        });
 
-  },
-  profileEdit: function (req, res) {
-    res.render("profileEdit", { lista: data });
-  },
-  login: function (req, res) {
-    return res.render("login");
-  },
-  register: function (req, res) {
-    return res.render("register");
-  },
-  loginUser: (req, res) => {
-    let form = req.body;
+    },
 
-    let filtro = {
-      where: [{ mail: form.email }]
-    };
-
-    data.Usuario.findOne(filtro)
-      .then((result) => {
-
-        if (result == null) return res.send("No existe el mail " + form.email)
-
-
-        let check = bcrypt.compareSync(form.Contrasenia, result.contrasenia);
-
-        if (check) {
-          req.session.user = result;
-
-          /* que lo guarde en cookie si el usuario lo tildo */
-          if (form.rememberme != undefined) {
-            res.cookie("userId", result.id, { maxAge: 1000 * 60 * 15 });
-          }
-          return res.redirect("/");
-        } else {
-          return res.send("La contraseña es incorrecta")
+    productInfo: async function (req, res) {
+        let id = req.params.id;
+        try {
+            let producto = await Producto.findByPk(id, {
+                include: [
+                    { model: Usuario, as: "Usuario" },
+                    { model: Comentario, as: "Comentario" }
+                ]
+            });
+            if (!producto) {
+                console.log("No encontre el producto");
+                // Si no se encuentra el producto, renderizar una vista con un mensaje de error o redirigir
+                return res.render("product", { error: "Producto no encontrado" });
+            } else {
+                console.log("Producto: ", producto);
+                // Si se encuentra el producto, renderizar la vista product.ejs con los detalles del producto
+                return res.render("product", { producto: producto });
+            }
+        } catch (error) {
+            console.log(error);
+            return res.status(500).send('Error interno del servidor');
         }
-
-
-
-      }).catch((err) => {
-        return console.log(err);
-      });
-  }
-  ,
-
-  create: (req, res) => {
-    res.render("/users/register")
-  },
-  store: function (req, res) {
-    let errores = validationResult(req);
-
-    //  if (errores.isEmpty()){
-    let form = req.body;
-
-    let usuarios = {
-      mail: form.Email,
-      nombre: form.nombre,
-      apellido: form.apellido,
-      usuario: form.usuario,
-      contrasenia: bcrypt.hashSync(form.pass, 12),
-      fechaNacimiento: form.fecha,
-      numeroDocumento: form.number,
-      foto: "/images/users" + form.fotoDePerfil
-    };
-    data.Usuario.create(usuarios)
-      .then(function (resultado) {
-        return res.redirect("/users/login");
-      })
-      .catch(function (error) {
-        return console.log(error);
-      });
-
-    // } else{
-    //   return res.render("/users/register", {errors: errors.mapped(), old: req.body})
-    // } 
-  }, logout: function (req, res) {
-    req.session.destroy();
-    res.clearCookie("userId");
-    return res.redirect('/');
-  }
-
+    }
 
 };
 module.exports = productosController;
