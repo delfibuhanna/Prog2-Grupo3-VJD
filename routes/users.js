@@ -40,7 +40,7 @@ router.get("/login", usuariosController.login);
 router.get('/profile/:id', usuariosController.profile);
 
 
- /* const { where } = require('sequelize');
+  const { where } = require('sequelize');
 const indexController = require('../controllers/indexController');
 let validaciones_login = [ 
     body("email")
@@ -61,25 +61,22 @@ let validaciones_login = [
     body("Contrasenia")
         .notEmpty().withMessage("Ingrese su contraseña").bail()
         .isLength({ min: 4 }).withMessage("La contraseña debe tener al menos 4 caracteres"),
-];
-/*        .custom(function(value, { req }){
-             db.usuarios.findOne({   /* email iria o usuarios??? */
-             /*   where: { email: req.body.email },
+];          
+/*.custom(function(value, { req }){
+             db.usuarios.findOne({  
+                where: { email: req.body.email },
                 })
                 .then(function(usuarios){
-                    if(usuarios){  /* que más falta???*/
-/*}
-            }) 
-        })
-    ]*/
+                    if(usuarios){  
+                    ];
+     }})
+     });
 
    
-/* router.get("/",usuariosController.index);
-router.get("/create", usuariosController.create);
- */
+//router.get("/",usuariosController.index);
+//router.get("/create", usuariosController.create);*/
+ 
 
 
 
 module.exports = router;
-
-

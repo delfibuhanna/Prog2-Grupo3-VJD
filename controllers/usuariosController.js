@@ -1,7 +1,7 @@
 const data = require("../database/models");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require('express-validator');
-const { Association } = require("sequelize");
+/*const { Association } = require("sequelize");*/
 
 
 const usuariosController = {
@@ -34,6 +34,7 @@ const usuariosController = {
   register: function (req, res) {
     return res.render("register");
   },
+  
   loginUser: (req, res) => {
     let form = req.body;
 
@@ -52,7 +53,7 @@ const usuariosController = {
         if (check) {
           req.session.user = result;
 
-          /* que lo guarde en cookie si el usuario lo tildo */
+          //que lo guarde en cookie si el usuario lo tildo 
           if (form.rememberme != undefined) {
             res.cookie("userId", result.id, { maxAge: 1000 * 60 * 15 });
           }
@@ -75,7 +76,7 @@ const usuariosController = {
   store: function (req, res) {
     let errores = validationResult(req);
 
-    //  if (errores.isEmpty()){
+    if (errores.isEmpty()){
     let form = req.body;
 
     let usuarios = {
@@ -96,9 +97,9 @@ const usuariosController = {
         return console.log(error);
       });
 
-    // } else{
-    //   return res.render("/users/register", {errors: errors.mapped(), old: req.body})
-    // } 
+    } else{
+     return res.render("/users/register", {errors: errors.mapped(), old: req.body})
+    } 
   }, logout: function (req, res) {
     req.session.destroy();
     res.clearCookie("userId");
@@ -107,6 +108,5 @@ const usuariosController = {
 
 
 };
-
 
 module.exports = usuariosController;

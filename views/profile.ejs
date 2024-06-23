@@ -1,17 +1,22 @@
 
 <body>
 	
-	<%- include("./partials/headerLogueado") %>
+	<% if (locals.user != undefined) { %>
+        <%- include('./partials/headerLogueado') %>
+     <% } else { %>
+        <%- include('./partials/header') %>
+    <% } %>
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src= <%= lista.foto %> alt="foto de perfil" class="foto-perfil">
+			 <!-- <img src= "/images/users/" alt="foto de perfil" class="foto-perfil"> -->
+
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><%= lista.nombre %>
+					<h1 class="main-title"><%= data.nombre %>
 						<a href="/users/profileEdit">
 							<i class="fas fa-cog"></i>
 						</a>
@@ -20,10 +25,9 @@
 				</div>
 				<div>
 					<ul class="">
-						<li><%= lista.mail%> </li>
-						<li><%= lista.Producto.length %></li>
+						<li><%= data.mail%> </li>
+						<li><%= data.Producto.length %> productos</li>
 						<li>200 seguidores</li>
-						<li><%= lista.Comentario.length %></li>
 					</ul>
 				</div>
 			</div>
@@ -39,18 +43,18 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			
-			<% for (let i = 0; i < lista.Producto.length; i++) { %>
+			<% for (let i = 4; i < data.Producto.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/id/<%= lista.Producto[i].productoId %>">
+                    <a href="/product/id/<%= data.Producto[i].id %>">
 						
 						<figure class="product-box_image">
-							<img src= <%= lista.Producto[i].foto %> alt="cafetera moulinex" class= "imagenProductos">
+							<img src= <%= lista[i].foto %> alt="cafetera moulinex" class= "imagenProductos">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= lista.Producto[i].nombre %></h2>
-							<p><%= lista.Producto[i].descripcion %></p>
-							<p>Comentarios: <%= lista[i].Comentario.length %></p>
+							<h2><%= data.Producto[i].nombre %></h2>
+							<p><%= data.Producto[i].descripcion %></p>
+							<p>Comentarios: <%= data.Comentario.length %></p>
 						</article>
 					</a>
 				</section>
