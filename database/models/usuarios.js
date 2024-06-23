@@ -7,7 +7,8 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.INTEGER
         },
         nombre: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
+            allowNull: false
         },
         apellido: {
             type: dataTypes.STRING
@@ -16,10 +17,12 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         usuario: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
+            allowNull: false
         },
         contrasenia: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
+            allowNull: false
         },
         fechaNacimiento: {
             type: dataTypes.DATE
@@ -47,14 +50,17 @@ module.exports = function (sequelize, dataTypes) {
         underscored: false
     };
     let Usuario = sequelize.define(alias, cols, config);
+
     Usuario.associate = function (models) {
        Usuario.hasMany(models.Producto, {
-            as: "Producto"
+            as: "Producto",
+            foreignKey: "usuarioId"
         });
 
         Usuario.hasMany(models.Comentario, {
-            as: "Comentario"
+            as: "Comentario",
+            foreignKey: "usuarioId"
         });
-    }
+    };
     return Usuario;
-}
+};

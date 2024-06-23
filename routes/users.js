@@ -40,7 +40,7 @@ router.get("/login", usuariosController.login);
 router.get('/profile/:id', usuariosController.profile);
 
 
-  const { where } = require('sequelize');
+ /* const { where } = require('sequelize');
 const indexController = require('../controllers/indexController');
 let validaciones_login = [ 
     body("email")

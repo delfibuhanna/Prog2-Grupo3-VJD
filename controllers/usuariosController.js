@@ -1,7 +1,7 @@
 const data = require("../database/models");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require('express-validator');
-/*const { Association } = require("sequelize");*/
+const { Association } = require("sequelize");
 
 
 const usuariosController = {
@@ -87,7 +87,7 @@ const usuariosController = {
       contrasenia: bcrypt.hashSync(form.pass, 12),
       fechaNacimiento: form.fecha,
       numeroDocumento: form.number,
-      foto: "/images/users" + form.fotoDePerfil
+      foto: "/images/users/" + form.fotoDePerfil
     };
     data.Usuario.create(usuarios)
       .then(function (resultado) {

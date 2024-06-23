@@ -7,13 +7,16 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.INTEGER
         },
         usuarioId: {
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER,
+            allowNull: false
         },
         productoId: {
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER,
+            allowNull: false
         },
         textoComentario: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
+            allowNull: false
         },
         createdAt: {
             type: dataTypes.DATE

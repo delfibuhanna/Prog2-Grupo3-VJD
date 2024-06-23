@@ -7,10 +7,12 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.INTEGER
         },
         usuarioId: {
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER,
+            allowNull: false
         },
         nombre: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
+            allowNull: false
         },
         foto: {
             type: dataTypes.STRING
@@ -36,13 +38,13 @@ module.exports = function (sequelize, dataTypes) {
     let Producto = sequelize.define(alias, cols, config);
 
     Producto.associate = function (models){
-
     Producto.belongsTo(models.Usuario,{
             as: "Usuario",
             foreingKey: "usuarioId"
         });
     Producto.hasMany(models.Comentario,{
-            as: "Comentario"
+            as: "Comentario",
+            foreingKey: "productoId"
         });
     
     }

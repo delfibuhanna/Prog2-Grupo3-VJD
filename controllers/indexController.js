@@ -6,7 +6,14 @@ let indexController= {
       include:[
         {association: "Usuario"},
         {association: "Comentario"}
+      ],
+      order: [
+        [
+          "createdAt", "DESC"
+        ]
       ]
+    
+      
     })
     .then(function (resultado) {
       return res.render("index",{lista: resultado});
