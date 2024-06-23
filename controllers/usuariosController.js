@@ -76,7 +76,7 @@ const usuariosController = {
   store: function (req, res) {
     let errores = validationResult(req);
 
-    if (errores.isEmpty()){
+     /* if (errores.isEmpty()){ */
     let form = req.body;
 
     let usuarios = {
@@ -97,9 +97,9 @@ const usuariosController = {
         return console.log(error);
       });
 
-    } else{
+     /* } else{
      return res.render("/users/register", {errors: errors.mapped(), old: req.body})
-    } 
+    } */
   }, logout: function (req, res) {
     req.session.destroy();
     res.clearCookie("userId");

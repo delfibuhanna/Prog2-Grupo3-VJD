@@ -23,7 +23,7 @@
 									<h2><%= lista[i].nombre %></h2>
 									<p><%= lista[i].descripcion %></p>
 									<p>Comentarios: <%= lista[i].comentarios ? lista[i].comentarios.length : 0 %></p>
-									<!-- PONELO ACÁ-->
+									<p>Por: <a href="/user/profile/<%= lista[i].Usuario.id %>"><%= lista[i].Usuario.nombre %></a></p>
 								</article>
 							</a>
 						</section>
