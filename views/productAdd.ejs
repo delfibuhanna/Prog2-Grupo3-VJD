@@ -15,33 +15,30 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action = "/users/profile" method= 'GET' class="form" >
+			<form action = "/product/productAdd/redirect" method= 'post' class="form" >
 				<div class="div">
-				 <label for="Imagen">Imagen:</label class="label">
-				 <input type="file"name="Imagen" id="Imagen" required></input>
-				 <% if (locals.errors && errors.imagen_producto) { %>
-					<p class="error"><%= errors.imagen_producto.msg %></p>
-				<% } %>
-				</div>
-				<div class="div">
-				 <label for="NombreDelProducto">Nombre del producto:</label class="label">
-				 <input type="text" name="Producto" id="MiProducto" placeholder="ej:lavarropas" required></input>
-				 <% if (locals.errors && errors.nombre_producto) { %>
-					<p class="error"><%= errors.nombre_producto.msg %></p>
-				<% } %>
-				</div>
-				<div class="div">
-				<label for="Descripcion">Descripción:</label class="label">
-				<input type="text" name="Descripcion" id="DescripcionDelProducto" placeholder="Describa su producto" required></input>
-				<% if (locals.errors && errors.descripcion) { %>
-					<p class="error"><%= errors.descripcion.msg %></p>
-				<% } %>
-				</div>
-				<div class="div">
-					<% if (locals.errors && errors.	Descripcion) { %>
-						<p class="error"><%= errors.Descripcion.msg %></p>
+					<label for="imagen">Imagen:</label class="label">
+					<input type="text"name="imagen" id="imagen" required></input>
+					<% if (locals.errors && errors.imagen) { %>
+						<p class="error"><%= errors.imagen.msg %></p>
 					<% } %>
-				<button class="button">Agregar productos</button class="button">
+				</div>
+				<div class="div">
+					<label for="producto">Nombre del producto:</label class="label">
+					<input type="text" name="producto" id="producto" placeholder="ej:lavarropas" required></input>
+					<% if (locals.errors && errors.producto) { %>
+						<p class="error"><%= errors.producto.msg %></p>
+					<% } %>
+				</div>
+				<div class="div">
+					<label for="descripcion">Descripción:</label class="label">
+					<input type="text" name="descripcion" id="descripcion" placeholder="Describa su producto" required></input>
+					<% if (locals.errors && errors.descripcion) { %>
+						<p class="error"><%= errors.descripcion.msg %></p>
+					<% } %>
+				</div>
+				<div class="div">
+					<button class="button" type="submit">Agregar productos</button class="button">
 				</div>
 			</form>
 

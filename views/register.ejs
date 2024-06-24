@@ -17,37 +17,63 @@
 			<!-- Show the "ultimos" products -->
 			<form class="Formulario" action = "/users/register" method= 'POST' class="form">
 				<div class="div">
-				 <label for="Email">Email:</label class="label">
-				 <input type="email"name="Email" id="Mimail" placeholder="ejemplo@gmail.com" ></input>
+					<label class="label" for="email">Email:</label>
+					<input type="email"name="email" id="email" placeholder="ejemplo@gmail.com" ></input>
+					<% if (locals.errors && errors.email) { %>
+						<p><%= errors.email.msg%></p>
+					<% } %>
 				</div>
 				<div class="div">
-					<label for="Email">Nombre</label class="label">
-					<input type="text"name="nombre" id="Mimail" ></input>
-					<label for="Email">Apellido:</label class="label">
-						<input type="text" name="apellido" id="Mimail"  ></input>
-				   </div>
-				<div class="div">
-				 <label for="usuario">Usuario:</label class="label">
-				 <input type="text" name="usuario" id="miusuario" placeholder="Pablo123" ></input>
+					<label for="nombre">Nombre:</label class="label">
+					<input type="text"name="nombre" id="nombre" ></input>
+					<% if (locals.errors && errors.nombre) { %>
+						<p><%= errors.nombre.msg%></p>
+					<% } %>
+				</div>
+				<div>
+					<label for="apellido">Apellido:</label class="label">
+					<input type="text" name="apellido" id="apellido"  ></input>
+					<% if (locals.errors && errors.apellido) { %>
+						<p><%= errors.apellido.msg%></p>
+					<% } %>
 				</div>
 				<div class="div">
-				<label for="Contraseña">Contraseña:</label class="label">
-				<input type="password"name="pass" id="Micontraseña" placeholder="*******" ></input>
+					<label for="usuario">Usuario:</label class="label">
+					<input type="text" name="usuario" id="usuario" placeholder="Pablo123" ></input>
+					<% if (locals.errors && errors.usuario) { %>
+						<p><%= errors.usuario.msg%></p>
+					<% } %>
 				</div>
 				<div class="div">
-				<label for="Fecha de nacimiento">Fecha de nacimiento:</label class="label">
-				<input type="date"name="fecha" id="Mifechadenacimiento" placeholder="DD/MM/YYYY"></input>
+					<label for="password">Contraseña:</label class="label">
+					<input type="password"name="password" id="password" placeholder="*******" ></input>
+					<% if (locals.errors && errors.password) { %>
+						<p><%= errors.password.msg%></p>
+					<% } %>
 				</div>
 				<div class="div">
-				<label for="Nro de documento">Numero de documento:</label class="div">
-				<input type="number"name="number" id="Midocumento" placeholder="ej: 45684492"></input>
+					<label for="fecha">Fecha de nacimiento:</label class="label">
+					<input type="date" name="fecha" id="fecha" placeholder="DD/MM/YYYY"></input>
+					<% if (locals.errors && errors.fecha) { %>
+						<p><%= errors.fecha.msg%></p>
+					<% } %>
 				</div>
 				<div class="div">
-				<label for="Foto de perfil">Foto de perfil:</label class="label">
-				<input type="text"name="fotoDePerfil" id="Mifotodeperfil" placeholder=""></input>
+					<label for="documento">Numero de documento:</label class="div">
+					<input type="number"name="documento" id="documento" placeholder="ej: 45684492"></input>
+					<% if (locals.errors && errors.documento) { %>
+						<p><%= errors.documento.msg%></p>
+					<% } %>
 				</div>
 				<div class="div">
-				<button class="button">Registrarse</button>
+					<label for="fotoPerfil">Foto de perfil:</label class="label">
+					<input type="text"name="fotoPerfil" id="fotoPerfil" placeholder=""></input>
+					<% if (locals.errors && errors.fotoPerfil) { %>
+						<p><%= errors.fotoPerfil.msg%></p>
+					<% } %>
+				</div>
+				<div class="div">
+					<button class="button">Registrarse</button>
 				</div>
 				</form>
 

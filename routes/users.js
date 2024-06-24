@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
 var usuariosController = require("../controllers/usuariosController");
+const data = require("../database/models")
+const { body } = require("express-validator");
 
 
 router.get('/profile', usuariosController.profile);
@@ -9,16 +10,13 @@ router.get('/profile', usuariosController.profile);
 router.get("/profileEdit", usuariosController.profileEdit); 
 router.get("/register", usuariosController.register);
 
-const data = require("../database/models")
-
-const { body } = require("express-validator");
-let validaciones = [ 
-    body("Email")
+let validacionesRegister = [ 
+    body("email")
         .notEmpty().withMessage("Debes completar el email").bail()
         .isEmail().withMessage("Ingrese un mail válido")
-        .custom(function(value, {req}) {
-            return db.usuarios.findOne({
-                where:{ email:req.body.Email},
+        .custom(function(value) {
+            return data.Usuario.findOne({
+                where:{ mail: value},
             })
             .then(function(usuarios) {
                 if (usuarios) {
@@ -26,18 +24,43 @@ let validaciones = [
                 }
             })
         }),
-    body ("Usuario")
+    body ("usuario")
         .notEmpty().withMessage("Ingrese un nombre de usuario").bail(),
-    body("pass")
+    body("password")
         .isLength({min: 4 }).withMessage("La contraseña debe tener al menos 4 caracteres"),
 
 ];
 
+let validacionesLogin = [
+    body("email")
+        .custom(function (value) {
+            return data.Usuario.findOne({
+                where: { mail: value }
+            })
+            .then(function (user) {
+                if(!user) {
+                    throw new Error("La dirección de mail ingresada es incorrecta")
+                }
+            })
+        }),
+    body("password")
+        .custom(function (value) {
+            return data.Usuario.findOne({
+                where: { contrasenia: value }
+            })
+            .then(function (contrasenia) {
+                if(!contrasenia) {
+                    throw new Error("La contraseña ingresada es incorrecta")
+                }
+            })
+        })
+]
+
 router.get("/register", usuariosController.register);
-router.post("/register", validaciones, usuariosController.store);
+router.post("/register", validacionesRegister, usuariosController.store);
 router.post('/logout', usuariosController.logout);
-router.post("/login",usuariosController.loginUser);
 router.get("/login", usuariosController.login);
+router.post("/login/redirect", validacionesLogin, usuariosController.loginUser);
 router.get('/profile/:id', usuariosController.profile);
 
  /* const { where } = require('sequelize');

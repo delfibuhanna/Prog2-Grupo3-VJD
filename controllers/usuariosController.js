@@ -36,7 +36,8 @@ const usuariosController = {
     return res.render("register");
   },
   
-  loginUser: (req, res) => {
+  loginUser: function (req, res) {
+    let errores = validationResult(req);
     let form = req.body;
 
     let filtro = {
@@ -49,7 +50,7 @@ const usuariosController = {
         if (result == null) return res.send("No existe el mail " + form.email)
 
 
-        let check = bcrypt.compareSync(form.Contrasenia, result.contrasenia);
+        let check = bcrypt.compareSync(form.password, result.contrasenia);
 
         if (check) {
           req.session.user = result;
@@ -60,11 +61,8 @@ const usuariosController = {
           }
           return res.redirect("/");
         } else {
-          return res.send("La contraseña es incorrecta")
+          res.render("login", { errors: errores.mapped(), old: req.body });
         }
-
-
-
       }).catch((err) => {
         return console.log(err);
       });
@@ -81,14 +79,14 @@ const usuariosController = {
     let form = req.body;
 
     let usuarios = {
-      mail: form.Email,
+      mail: form.email,
       nombre: form.nombre,
       apellido: form.apellido,
       usuario: form.usuario,
-      contrasenia: bcrypt.hashSync(form.pass, 12),
+      contrasenia: bcrypt.hashSync(form.password, 12),
       fechaNacimiento: form.fecha,
-      numeroDocumento: form.number,
-      foto: "/images/users/" + form.fotoDePerfil
+      numeroDocumento: form.documento,
+      foto: "/images/users/" + form.fotoPerfil
     };
     data.Usuario.create(usuarios)
       .then(function (resultado) {

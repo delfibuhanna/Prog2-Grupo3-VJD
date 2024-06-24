@@ -1,5 +1,6 @@
 const  data = require("../database/models");
 const { Op } = require("sequelize");
+const { validationResult } = require("express-validator")
 
 const productosController = {
     index: function (req,res) {
@@ -38,6 +39,31 @@ const productosController = {
     productAdd : function (req,res) {
         res.render("productAdd", {lista: data});
     },
+
+    store: function (req, res){
+        let errores = validationResult(req);
+        if (errores.isEmpty()) {
+            let form = req.body
+            let producto = {
+                usuarioId: req.session.user.id,
+                foto: "/images/products/" + form.imagen,
+                nombre: form.producto,
+                descripcion: form.descripcion
+            }
+            console.log("PRODUCTO NUEVO: ", producto)
+
+            data.Producto.create(producto)
+            .then(function (resultado) {
+                return res.redirect("/");
+            })
+            .catch(function (error) {
+                return console.log(error)
+            })
+        } else {
+            res.render("productAdd", {errores: errores.mapped()})
+        }
+    },
+    
     searchResults : function (req,res) {
         let terminoBusqueda = req.query.search;
         console.log("termino de busqueda", terminoBusqueda)

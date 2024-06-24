@@ -14,11 +14,11 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action = "/users/login" method= 'POST' class="form">
+			<form action = "/users/login/redirect/" method= 'POST' class="form">
 				
 				<div class="div">
-				 <label for="Usuario">Usuario:</label class="label">
-				 <input type="Email"name="email" id="MiUsuario" required></input>
+				 <label for="email">Usuario:</label class="label">
+				 <input type="email"name="email" id="email" required></input>
 				 <% if (locals.errors && errors.email) {%>
 					<p>
 						<%=errors.email.msg %>
@@ -26,20 +26,20 @@
 					<% } %>
 				</div>
 				<div class="div">
-				 <label for="Contraseña">Contraseña:</label class="label">
-				 <input type="password" name="Contrasenia" id="MiContraseña" ></input>
-				 <% if (locals.errors && errors.Contrasenia) {%>
+				 <label for="password">Contraseña:</label class="label">
+				 <input type="password" name="password" id="password" ></input>
+				 <% if (locals.errors && errors.password) {%>
 					<p>
-						<%=errors.Contrasenia.msg %>
+						<%=errors.password.msg %>
 					</p>
 					<% } %>
 				</div>
 				<div class="div">
-				<label for="Recordarme">Recordarme:</label>
-				<input type="checkbox" name="rememberme" value="" ></input>
+					<label for="Recordarme">Recordarme:</label>
+					<input type="checkbox" name="rememberme" value="" ></input>
 				</div>
 				<div class="div">
-				<button class="button" type="submit">Iniciar sesión</button class="button" >
+					<button class="button" type="submit">Iniciar sesión</button>
 				</div>
 			</form>
 
