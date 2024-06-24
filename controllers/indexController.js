@@ -4,8 +4,8 @@ let indexController= {
   index:function(req,res){
     data.Producto.findAll({
       include:[
-        {association: "Usuario"},
-        {association: "Comentario"}
+        { model: data.Usuario, as: "Usuario"},
+        { model: data.Comentario, as: "Comentario"}
       ],
       order: [
         [

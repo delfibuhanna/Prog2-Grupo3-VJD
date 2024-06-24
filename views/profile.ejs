@@ -49,7 +49,7 @@
 					<a href="/product/<%= lista.Producto[i].id %>">
 						
 						<figure class="product-box_image">
-							<img src= <%= lista.Producto[i].foto %> alt="cafetera moulinex" class= "imagenProductos">
+							<img src= <%= lista.Producto[i].foto %> alt="<%= lista.Producto[i].descripcion%>" class= "imagenProductos">
 						</figure>
 						<article class="product-box_data">
 							<h2><%= lista.Producto[i].nombre %></h2>

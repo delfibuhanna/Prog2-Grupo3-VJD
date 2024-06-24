@@ -6,7 +6,7 @@ const { body } = require("express-validator");
 
 
 router.get('/profile', usuariosController.profile);
-// router.get('/profile/id/:id',usuariosController.profile);
+router.get('/profile/:id', usuariosController.profile);
 router.get("/profileEdit", usuariosController.profileEdit); 
 router.get("/register", usuariosController.register);
 
@@ -61,7 +61,6 @@ router.post("/register", validacionesRegister, usuariosController.store);
 router.post('/logout', usuariosController.logout);
 router.get("/login", usuariosController.login);
 router.post("/login/redirect", validacionesLogin, usuariosController.loginUser);
-router.get('/profile/:id', usuariosController.profile);
 
  /* const { where } = require('sequelize');
 const indexController = require('../controllers/indexController');

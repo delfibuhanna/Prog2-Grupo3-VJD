@@ -18,13 +18,12 @@ let validacion = [
         .bail(),
 ]
 
-
-router.get("/",productosController.product);
 router.get("/productAdd",productosController.productAdd);
 router.get("/search-results",productosController.searchResults);
 router.get("/:id", productosController.productInfo);
 router.get("/comentar", productosController.comment);
 
 router.post("/productAdd/redirect", validacion, productosController.store);
+router.post("/productDelete/", productosController.productDelete);
 
 module.exports = router;

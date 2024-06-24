@@ -31,7 +31,7 @@
 							<h2><%= lista[i].nombre %></h2>
 							<p><%= lista[i].descripcion %></p>
 							<p>Comentarios: <%= lista[i].Comentario.length %></p>
-
+							<p>Publicado por: <strong><a href="/users/profile/<%= lista[i].Usuario.id %>"><%= lista[i].Usuario.nombre %></a></strong></p>
 						</article>
 					</a>
 				</section>
@@ -58,7 +58,7 @@
 								<h2><%= lista[i].nombre %></h2>
 								<p><%= lista[i].descripcion %></p>
 								<p>Comentarios: <%= lista[i].Comentario.length %></p>
-
+								<p>Publicado por: <strong><a href="/users/profile/<%= lista[i].Usuario.id %>"><%= lista[i].Usuario.nombre %></a></strong></p>
 							</article>
 						</a>
 					</section>

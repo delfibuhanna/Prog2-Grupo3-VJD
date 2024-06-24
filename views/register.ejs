@@ -1,5 +1,3 @@
-
-
 <body>
 	
 	<% if (locals.user != undefined) { %>
@@ -46,7 +44,7 @@
 				</div>
 				<div class="div">
 					<label for="password">Contraseña:</label class="label">
-					<input type="password"name="password" id="password" placeholder="*******" ></input>
+					<input type="password"name="password" id="password" placeholder="***" ></input>
 					<% if (locals.errors && errors.password) { %>
 						<p><%= errors.password.msg%></p>
 					<% } %>

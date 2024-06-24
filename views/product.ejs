@@ -15,7 +15,12 @@
 			<div class="d-flex align-items-center">
 				 <h2 class="products-title"><%= producto.nombre %></h2> 
 				 <p class="product-detail-description">
-					<a href="/product/productAdd">Editar</a>
+					<% if (locals.user != undefined && locals.user.id == producto.Usuario.id) { %>
+						<form action="/product/productDelete" method="post">
+							<input type="hidden" name="id" value="<%= producto.id %>">
+							<button class="button" type="submit">Borrar</button>
+						</form>
+					<% } %>
 				</p>
 			</div>
 			<div class="product-detail">
@@ -24,7 +29,7 @@
 						<img src = <%= producto.foto %> alt="" class="product-detail-img">
 						<p class="product-detail-description">
 							<%= producto.descripcion %> </p>
-						<h2> Publicado por: <a href="/users/profile/id/<%= producto.Usuario.id %>"><%= producto.Usuario.nombre %></a></h2>
+						<h2> Publicado por: <a href="/users/profile/<%= producto.Usuario.id %>"><%= producto.Usuario.nombre %></a></h2>
 					</article>
 					<div class="col-12 col-lg-4">
 						<section class="comments">

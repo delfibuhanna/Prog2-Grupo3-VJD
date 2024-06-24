@@ -3,41 +3,23 @@ const { Op } = require("sequelize");
 const { validationResult } = require("express-validator")
 
 const productosController = {
-    index: function (req,res) {
-        let relaciones ={
-            include: [
-                {association: "Usuario"},
-                {association: "Comentario"}
-            ]
-        }
-        data.Producto.findAll()
-        
-            .then(function(resultado) {
-                return res.render("index",{lista: resultado})
-            
-            }).catch(function (errores) {
-                return console.log(errores);;
-                
-            })
-    },
     
-    product: function (req, res) {
-        const id = req.params.id; // Obtiene el ID del producto desde los parámetros de la ruta
-        data.Producto.findByPk(id) // Busca el producto por su Primary Key (ID)
-            .then(function(producto) {
-                if (producto) {
-                    res.render("product", { producto: producto }); // Si encuentra el producto, renderiza la vista 'product' con los datos del producto
-                } else {
-                    res.status(404).send('Producto no encontrado'); // Si no encuentra el producto, envía un error 404
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
-                res.status(500).send('Error interno del servidor'); // Manejo de errores
-            });
-    },
     productAdd : function (req,res) {
         res.render("productAdd", {lista: data});
+    },
+
+    productDelete : function (req, res) {
+        let id = req.body.id;
+
+        data.Producto.destroy({
+            where: [{ id: id}]
+        })
+        .then(function (result) {
+            return res.redirect("/")
+        })
+        .catch(function (error) {
+            return console.log(error)
+        })
     },
 
     store: function (req, res){
