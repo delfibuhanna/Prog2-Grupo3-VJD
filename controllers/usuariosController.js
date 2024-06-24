@@ -16,7 +16,8 @@ const usuariosController = {
           association: "Producto",
           include: [{ association: "Comentario" }]
         }
-      ]
+      ],
+      order: [["createdAt", "DESC"]]
     })
       .then(function (resultado){
         return res.render( "profile" ,{ lista: resultado })

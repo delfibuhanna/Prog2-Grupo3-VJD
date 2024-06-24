@@ -18,10 +18,10 @@
 				
 				<div class="div">
 				 <label for="Usuario">Usuario:</label class="label">
-				 <input type="Email"name="mail" id="MiUsuario" ></input>
-				 <% if (locals.errors && errors.mail) {%>
+				 <input type="Email"name="email" id="MiUsuario" required></input>
+				 <% if (locals.errors && errors.email) {%>
 					<p>
-						<%=errors.mail.msg %>
+						<%=errors.email.msg %>
 					</p>
 					<% } %>
 				</div>

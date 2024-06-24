@@ -5,7 +5,7 @@ var usuariosController = require("../controllers/usuariosController");
 
 
 router.get('/profile', usuariosController.profile);
-router.get('/profile/id/:id',usuariosController.profile);
+// router.get('/profile/id/:id',usuariosController.profile);
 router.get("/profileEdit", usuariosController.profileEdit); 
 router.get("/register", usuariosController.register);
 
@@ -33,7 +33,14 @@ let validaciones = [
 
 ];
 
- const { where } = require('sequelize');
+router.get("/register", usuariosController.register);
+router.post("/register", validaciones, usuariosController.store);
+router.post('/logout', usuariosController.logout);
+router.post("/login",usuariosController.loginUser);
+router.get("/login", usuariosController.login);
+router.get('/profile/:id', usuariosController.profile);
+
+ /* const { where } = require('sequelize');
 const indexController = require('../controllers/indexController');
 let validaciones_login = [ 
     body("mail")
@@ -59,12 +66,7 @@ let validaciones_login = [
         })
 })
 ];          
-router.get("/register", usuariosController.register);
-router.post("/register", validaciones, usuariosController.store);
-router.post('/logout',  usuariosController.logout);
-router.post("/login", validaciones_login, usuariosController.loginUser);
-router.get("/login", usuariosController.login);
-router.get('/profile/:id', usuariosController.profile);
+
 /*.custom(function(value, { req }){
              db.usuarios.findOne({  
                 where: { email: req.body.email },
