@@ -1,4 +1,4 @@
-const { Producto, Usuario, Comentario, data } = require("../database/models");
+const  data = require("../database/models");
 const { Op } = require("sequelize");
 
 const productosController = {
@@ -9,7 +9,7 @@ const productosController = {
                 {association: "Comentario"}
             ]
         }
-        Producto.findAll()
+        data.Producto.findAll()
         
             .then(function(resultado) {
                 return res.render("index",{lista: resultado})
@@ -41,7 +41,7 @@ const productosController = {
     searchResults : function (req,res) {
         let terminoBusqueda = req.query.search;
         console.log("termino de busqueda", terminoBusqueda)
-        Producto.findAll({
+        data.Producto.findAll({
             where: {
                 [Op.or]: [
                     {
@@ -57,8 +57,8 @@ const productosController = {
                 ]
             },
             include: [
-                { model: Usuario, as: "Usuario"},
-                { model: Comentario, as: "Comentario"}
+                { model: data.Usuario, as: "Usuario"},
+                { model: data.Comentario, as: "Comentario"}
             ],
             order: [['createdAt', 'DESC']]
         })
@@ -81,10 +81,15 @@ const productosController = {
     productInfo: async function (req, res) {
         let id = req.params.id;
         try {
-            let producto = await Producto.findByPk(id, {
+            let producto = await data.Producto.findByPk(id, {
                 include: [
-                    { model: Usuario, as: "Usuario" },
-                    { model: Comentario, as: "Comentario" }
+                    { model: data.Usuario, as: "Usuario" },
+                    { model: data.Comentario, as: "Comentario",
+                        include: [{
+                            model: data.Usuario, as: "Usuario"
+                        }],
+                        order: [['createdAt', 'DESC']]
+                    }
                 ]
             });
             if (!producto) {
@@ -100,6 +105,20 @@ const productosController = {
             console.log(error);
             return res.status(500).send('Error interno del servidor');
         }
+    },
+    comment: function(req, res) {
+        data.Comentario.create({
+            usuarioId: req.body.usuarioId,
+            productoId: req.body.productoId,
+            textoComentario: req.body.textoComentario,
+            // createdAt: new Date()
+        })
+        .then (function (result) {
+            return console.log(result)
+        })
+        .catch (function (errors) {
+            return console.log(errors)
+        })
     }
 
 };

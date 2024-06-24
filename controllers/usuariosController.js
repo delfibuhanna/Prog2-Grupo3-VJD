@@ -34,10 +34,49 @@ const usuariosController = {
   register: function (req, res) {
     return res.render("register");
   },
-  store: function (req, res) {
-    let errors = validationResult(req);
+  
+  loginUser: (req, res) => {
+    let form = req.body;
 
-    if (errores.isEmpty()){
+    let filtro = {
+      where: [{ mail: form.email }]
+    };
+
+    data.Usuario.findOne(filtro)
+      .then((result) => {
+
+        if (result == null) return res.send("No existe el mail " + form.email)
+
+
+        let check = bcrypt.compareSync(form.Contrasenia, result.contrasenia);
+
+        if (check) {
+          req.session.user = result;
+
+          //que lo guarde en cookie si el usuario lo tildo 
+          if (form.rememberme != undefined) {
+            res.cookie("userId", result.id, { maxAge: 1000 * 60 * 15 });
+          }
+          return res.redirect("/");
+        } else {
+          return res.send("La contraseña es incorrecta")
+        }
+
+
+
+      }).catch((err) => {
+        return console.log(err);
+      });
+  }
+  ,
+
+  create: (req, res) => {
+    res.render("/users/register")
+  },
+  store: function (req, res) {
+    let errores = validationResult(req);
+
+     /* if (errores.isEmpty()){ */
     let form = req.body;
 
     let usuarios = {
@@ -58,48 +97,10 @@ const usuariosController = {
         return console.log(error);
       });
 
-    }else{
+     /* } else{
      return res.render("/users/register", {errors: errors.mapped(), old: req.body})
-    } 
-  },
-  loginUser: (req, res) => {
-    let errors = validationResult(req)
-    let form = req.body;
-
-    let filtro = {
-      where: [{ mail: form.mail }]
-    };
-
-    data.Usuario.findOne(filtro)
-      .then((result) => {
-        if (result == null) return res.render("login", {errors: errors.mapped(), old:req.body}); 
-        let check = bcrypt.compareSync(form.Contrasenia, result.Contrasenia);
-
-        if (check) {
-          req.session.user = result;
-
-          //que lo guarde en cookie si el usuario lo tildo 
-          if (form.rememberme != undefined) {
-            res.cookie("userId", result.id, { maxAge: 1000 * 60 * 15 });
-          }
-          return res.redirect("/");
-        } else {
-          return res.render("login", {errors: errors.mapped(), old:req.body}); 
-        }
-
-
-
-      }).catch((err) => {
-        return console.log(err);
-      });
-  }
-  ,
-
-  create: (req, res) => {
-    res.render("/users/register")
-  },
-  
-  logout: function (req, res) {
+    } */
+  }, logout: function (req, res) {
     req.session.destroy();
     res.clearCookie("userId");
     return res.redirect('/');

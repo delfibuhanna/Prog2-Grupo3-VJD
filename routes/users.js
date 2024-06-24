@@ -4,9 +4,10 @@ var router = express.Router();
 var usuariosController = require("../controllers/usuariosController");
 
 
-router.get("/register", usuariosController.register);
 router.get('/profile', usuariosController.profile);
+router.get('/profile/id/:id',usuariosController.profile);
 router.get("/profileEdit", usuariosController.profileEdit); 
+router.get("/register", usuariosController.register);
 
 const data = require("../database/models")
 

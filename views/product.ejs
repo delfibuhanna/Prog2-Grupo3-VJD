@@ -24,30 +24,44 @@
 						<img src = <%= producto.foto %> alt="" class="product-detail-img">
 						<p class="product-detail-description">
 							<%= producto.descripcion %> </p>
+						<h2> Publicado por: <a href="/users/profile/id/<%= producto.Usuario.id %>"><%= producto.Usuario.nombre %></a></h2>
 					</article>
 					<div class="col-12 col-lg-4">
 						<section class="comments">
 	
-						<% if (producto.comentarios) { %>
-							<% for (let i = 0; i < producto.comentarios.length; i++) { %>
+						<% if (producto.Comentario) { %>
+							<% for (let i = 0; i < producto.Comentario.length; i++) { %>
 							
 								<article>
-									<img src= <%= producto.comentarios[i].Foto %> alt="">
+									<img src= <%= producto.Comentario[i].Usuario.foto %> alt="Foto de perfil">
 									<div class="data">
 										<p class="user">
-										<strong> <a href="/users/profile"> <%= producto.comentarios[i].usuario %> </a> </strong>
-										<%= producto.comentarios[i].texto_comentario %></p>
+										<strong> <a href="/users/profile/<%= producto.Usuario.id %>"> <%= producto.Comentario[i].Usuario.nombre %> </a> </strong>
+										<%= producto.Comentario[i].textoComentario %></p>
 									</div>
 								</article>
 							<% } %>
+						<% } else { %>
+							<article>
+								<h2>Aún no existen comentarios para este producto.</h2>
+							</article>
 						<% } %>
 	
 						</section>
-							<form class="form" action="/product" method="get">
-								<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<% if (locals.user != undefined) { %>
+							<form class="form" action="/product/comentar" method="get">
+								<input class="form-input" name="textoComentario" type="text" value="" placeholder="Agregar comentario" minlength="3">
+								<input type="hidden" name="usuarioId" value="<%= producto.Usuario.id %>" />
+								<input type="hidden" name="productoId" value="<%= producto.id %>" />
 								<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 							</form>
 							<hr>
+							<% } else { %>
+								<form class="form" action="/users/login" method="get">
+									<button type="submit" class="button">Debes estar logueado para comentar</button>
+								</form>
+								<hr>
+					    <% } %>
 					</div>
 				</div>
 			</div>
