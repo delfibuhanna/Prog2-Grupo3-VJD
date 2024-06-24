@@ -32,36 +32,38 @@ let validaciones = [
 
 ];
 
-router.get("/register", usuariosController.register);
-router.post("/register", validaciones, usuariosController.store);
-router.post('/logout',  usuariosController.logout);
-router.post("/login", usuariosController.loginUser);
-router.get("/login", usuariosController.login);
-router.get('/profile/:id', usuariosController.profile);
-
-
- /* const { where } = require('sequelize');
+ const { where } = require('sequelize');
 const indexController = require('../controllers/indexController');
 let validaciones_login = [ 
-    body("email")
-        .notEmpty().withMessage("Debes completar el email").bail()
-        .isEmail().withMessage("Este email no es válido")
+    body("mail")
         .custom(function(value,{req}){
             return data.Usuario.findOne({
-                where: { email: req.body.email }
+                where: { mail: req.body.mail }
             })
                 .then(function(usuario){
-                    if (usuario){
-                        throw new Error("El email ingresado ya existe")
+                    if (!usuario){
+                        throw new Error("El email ingresado no existe")
                     }
                 })
         }),
-    body("email")
-    .notEmpty().withMessage("Ingrese su nombre de usuario").bail(), 
     body("Contrasenia")
-        .notEmpty().withMessage("Ingrese su contraseña").bail()
-        .isLength({ min: 4 }).withMessage("La contraseña debe tener al menos 4 caracteres"),
+    .custom(function(value){
+        return data.Usuario.findOne({
+            where: {Contrasenia: value}, 
+    })
+        .then(function(Contrasenia){
+            if (!Contrasenia){
+                throw new Error("La contraseña ingresada es inexistente")
+            }
+        })
+})
 ];          
+router.get("/register", usuariosController.register);
+router.post("/register", validaciones, usuariosController.store);
+router.post('/logout',  usuariosController.logout);
+router.post("/login", validaciones_login, usuariosController.loginUser);
+router.get("/login", usuariosController.login);
+router.get('/profile/:id', usuariosController.profile);
 /*.custom(function(value, { req }){
              db.usuarios.findOne({  
                 where: { email: req.body.email },

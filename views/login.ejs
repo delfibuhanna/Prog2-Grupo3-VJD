@@ -18,18 +18,28 @@
 				
 				<div class="div">
 				 <label for="Usuario">Usuario:</label class="label">
-				 <input type="Email"name="email" id="MiUsuario" required></input>
+				 <input type="Email"name="mail" id="MiUsuario" ></input>
+				 <% if (locals.errors && errors.mail) {%>
+					<p>
+						<%=errors.mail.msg %>
+					</p>
+					<% } %>
 				</div>
 				<div class="div">
 				 <label for="Contraseña">Contraseña:</label class="label">
-				 <input type="password" name="Contrasenia" id="MiContraseña" required></input>
+				 <input type="password" name="Contrasenia" id="MiContraseña" ></input>
+				 <% if (locals.errors && errors.Contrasenia) {%>
+					<p>
+						<%=errors.Contrasenia.msg %>
+					</p>
+					<% } %>
 				</div>
 				<div class="div">
 				<label for="Recordarme">Recordarme:</label>
 				<input type="checkbox" name="rememberme" value="" ></input>
 				</div>
 				<div class="div">
-				<button class="button">Iniciar sesión</button class="button">
+				<button class="button" type="submit">Iniciar sesión</button class="button" >
 				</div>
 			</form>
 
