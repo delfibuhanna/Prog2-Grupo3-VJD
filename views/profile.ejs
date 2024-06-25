@@ -16,9 +16,11 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"><%= lista.nombre + ' ' + lista.apellido%>
-						<a href="/users/profileEdit">
-							<i class="fas fa-cog"></i>
-						</a>
+						<% if(locals.user != undefined && locals.user.id == lista.id) { %>
+							<a href="/users/profileEdit">
+								<i class="fas fa-cog"></i>
+							</a>
+						<% } %>
 					</h1>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 				</div>
