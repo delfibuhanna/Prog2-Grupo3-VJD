@@ -16,14 +16,14 @@
 			<form class="Formulario" action = "/users/register" method= 'POST' class="form">
 				<div class="div">
 					<label class="label" for="email">Email:</label>
-					<input type="email"name="email" id="email" placeholder="ejemplo@gmail.com" ></input>
+					<input type="email"name="email" id="email" placeholder="ejemplo@gmail.com"></input>
 					<% if (locals.errors && errors.email) { %>
 						<p><%= errors.email.msg%></p>
 					<% } %>
 				</div>
 				<div class="div">
 					<label for="nombre">Nombre:</label class="label">
-					<input type="text"name="nombre" id="nombre" ></input>
+					<input type="text"name="nombre" id="nombre"></input>
 					<% if (locals.errors && errors.nombre) { %>
 						<p><%= errors.nombre.msg%></p>
 					<% } %>

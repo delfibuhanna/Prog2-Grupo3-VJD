@@ -27,7 +27,15 @@ const usuariosController = {
 
   },
   profileEdit: function (req, res) {
-    res.render("profileEdit", { lista: data });
+    let id = req.session.user.id;
+
+    data.Usuario.findByPk(id)
+    .then(function (result) {
+      res.render("profileEdit", { user: result });
+    })
+    .catch(function (error) {
+      return console.log(error);
+    })
   },
   login: function (req, res) {
     return res.render("login");
@@ -35,19 +43,55 @@ const usuariosController = {
   register: function (req, res) {
     return res.render("register");
   },
+  update: function(req, res) {
+    let errors = validationResult(req);
+    if(errors.isEmpty()) {
+      let form = req.body;
+      let id = form.id;
+
+      let usuario = {
+        mail: form.email,
+        nombre: form.nombre,
+        apellido: form.apellido,
+        usuario: form.usuario,
+        fechaNacimiento: form.fecha,
+        numeroDocumento: form.documento,
+        foto: form.fotoPerfil
+      }
+
+      if(form.password != '******') {
+        usuario.contrasenia = bcrypt.hashSync(form.password, 12)
+      }
+      
+      data.Usuario.update(usuario, {
+        where: {id: id}
+      })
+      .then(function (result) {
+        return res.redirect("/");
+      })
+      .catch(function (error) {
+        return console.log("ERROR:  ", error)
+      })
+    } else {
+      console.log("Errores: ", errors)
+      return res.render("profileEdit", {errors: errors.mapped(), old: req.body});
+    }
+  },
   
   loginUser: function (req, res) {
     let errores = validationResult(req);
     let form = req.body;
 
     let filtro = {
-      where: [{ mail: form.email }]
+      where: [{ 
+        mail: form.email
+      }]
     };
 
     data.Usuario.findOne(filtro)
       .then((result) => {
 
-        if (result == null) return res.send("No existe el mail " + form.email)
+        if (result == null) return res.render("login", { errors: errores.mapped(), old: form });
 
 
         let check = bcrypt.compareSync(form.password, result.contrasenia);
@@ -61,7 +105,7 @@ const usuariosController = {
           }
           return res.redirect("/");
         } else {
-          res.render("login", { errors: errores.mapped(), old: req.body });
+          res.render("login", { errors: errores.mapped(), old: form });
         }
       }).catch((err) => {
         return console.log(err);

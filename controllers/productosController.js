@@ -9,7 +9,7 @@ const productosController = {
     },
 
     productDelete : function (req, res) {
-        let id = req.body.id;
+        let id = req.params.id;
 
         data.Producto.destroy({
             where: [{ id: id}]
@@ -19,6 +19,18 @@ const productosController = {
         })
         .catch(function (error) {
             return console.log(error)
+        })
+    },
+
+    productEdit: function (req, res) {
+        let id = req.params.id;
+
+        data.Producto.findByPk(id)
+        .then(function (result) {
+            return res.render("productEdit", { data: result });
+        })
+        .catch(function (error) {
+            return console.log(error);
         })
     },
 
@@ -44,6 +56,26 @@ const productosController = {
         } else {
             res.render("productAdd", {errores: errores.mapped()})
         }
+    },
+
+    update: function(req, res) {
+        let form = req.body;
+        let producto = {
+            usuarioId: req.session.user.id,
+            foto: form.imagen,
+            nombre: form.producto,
+            descripcion: form.descripcion
+        }
+        
+        data.Producto.update(producto, {
+            where: [{ id: form.id }]
+        })
+        .then(function (result) {
+            return res.redirect("/product/" + form.id);
+        })
+        .catch(function (error) {
+            return console.log(error);
+        })
     },
     
     searchResults : function (req,res) {
@@ -115,17 +147,18 @@ const productosController = {
         }
     },
     comment: function(req, res) {
+        let form = req.body
         data.Comentario.create({
-            usuarioId: req.body.usuarioId,
-            productoId: req.body.productoId,
-            textoComentario: req.body.textoComentario,
+            usuarioId: form.usuarioId,
+            productoId: form.productoId,
+            textoComentario: form.comentario,
             // createdAt: new Date()
         })
         .then (function (result) {
-            return console.log(result)
+            return res.redirect("/product/" + form.productoId);
         })
         .catch (function (errors) {
-            return console.log(errors)
+            return console.log(errors);
         })
     }
 
